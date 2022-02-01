@@ -4,7 +4,8 @@
   "description": "A scaffold template for Slack apps",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "lint": "eslint --ext .js ."
   },
   "author": "Slack Technologies, LLC",
   "license": "MIT",
@@ -23,5 +24,10 @@
   "dependencies": {
     "@slack/bolt": "^3.8.1",
     "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.8.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
   }
 }

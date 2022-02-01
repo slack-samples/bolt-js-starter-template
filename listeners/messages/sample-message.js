@@ -1,4 +1,4 @@
-const sampleMessageCallback = async ({ context, client, message, say }) => {
+const sampleMessageCallback = async ({ context, say }) => {
   try {
     const greeting = context.matches[0];
     await say(`${greeting}, how are you?`);
