@@ -1,4 +1,3 @@
-
 const { App, LogLevel } = require('@slack/bolt');
 const { config } = require('dotenv');
 const { registerListeners } = require('./listeners');
@@ -19,33 +18,33 @@ const app = new App({
     storeInstallation: async (installation) => {
       // Org-wide installation
       if (installation.isEnterpriseInstall && installation.enterprise !== undefined) {
-        return await tempDB.set(installation.enterprise.id, installation);
+        return tempDB.set(installation.enterprise.id, installation);
       }
       // Single team installation
       if (installation.team !== undefined) {
-        return await tempDB.set(installation.team.id, installation);
+        return tempDB.set(installation.team.id, installation);
       }
       throw new Error('Failed saving installation data to installationStore');
     },
     fetchInstallation: async (installQuery) => {
       // Org-wide installation lookup
       if (installQuery.isEnterpriseInstall && installQuery.enterpriseId !== undefined) {
-        return await tempDB.get(installQuery.enterpriseId);
+        return tempDB.get(installQuery.enterpriseId);
       }
       // Single team installation lookup
       if (installQuery.teamId !== undefined) {
-        return await tempDB.get(installQuery.teamId);
+        return tempDB.get(installQuery.teamId);
       }
       throw new Error('Failed fetching installation');
     },
     deleteInstallation: async (installQuery) => {
       // Org-wide installation deletion
       if (installQuery.isEnterpriseInstall && installQuery.enterpriseId !== undefined) {
-        return await tempDB.delete(installQuery.enterpriseId);
+        return tempDB.delete(installQuery.enterpriseId);
       }
       // Single team installation deletion
       if (installQuery.teamId !== undefined) {
-        return await tempDB.delete(installQuery.teamId);
+        return tempDB.delete(installQuery.teamId);
       }
       throw new Error('Failed to delete installation');
     },
@@ -54,13 +53,13 @@ const app = new App({
     // If true, /slack/install redirects installers to the Slack Authorize URL
     // without rendering the web page with "Add to Slack" button
     directInstall: false,
-  }
+  },
 });
 
-/** Register Listeners **/
+/** Register Listeners */
 registerListeners(app);
 
-/** Start Bolt App **/
+/** Start Bolt App */
 (async () => {
   try {
     await app.start(process.env.PORT || 3000);
