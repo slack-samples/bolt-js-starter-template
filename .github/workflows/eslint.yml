@@ -21,6 +21,6 @@ jobs:
     - name: Install modules
       run: npm install
     - name: Start app
-    - run: npm start
+      run: npm start
     - name: Run ESLint
       run: npm run lint
