@@ -3,9 +3,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     labels:
       - "npm"
       - "dependencies"
-    allow:
-      - dependency-name: "@slack/bolt"
