@@ -1,0 +1,18 @@
+{
+  "manifest": {
+    "script": {
+      "default": "node node_modules/@slack/bolt/dist/cli/manifest.js"
+    }
+  },
+  "run": {
+    "script": {
+      "default": "node app.js"
+    },
+    "watcher": {
+      "filter_regex": "^.*\\.js$",
+      "paths": [
+        "./"
+      ]
+    }
+  }
+}
