@@ -6,7 +6,7 @@
   },
   "run": {
     "script": {
-      "default": "node app.js"
+      "default": "node node_modules/@slack/bolt/dist/cli/run.js && node app.js"
     },
     "watcher": {
       "filter_regex": "^.*\\.js$",
