@@ -4,7 +4,7 @@
       "default": "node node_modules/@slack/bolt/dist/cli/manifest.js"
     }
   },
-  "run": {
+  "run-managed": {
     "script": {
       "default": "node node_modules/@slack/bolt/dist/cli/run.js"
     }
