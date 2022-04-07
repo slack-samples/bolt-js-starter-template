@@ -57,21 +57,16 @@
     },
     "functions": {
         "reverse": {
-            "title": "bolt-reverse",
+            "title": "Reverse",
             "description": "Takes a string and reverses it",
             "input_parameters": {
                 "required": [
-                    "stringToReverse",
-                    "channel_id"
+                    "stringToReverse"
                 ],
                 "properties": {
                     "stringToReverse": {
                         "type": "string",
                         "description": "The string to reverse"
-                    },
-                    "channel_id": {
-                        "type": "slack#/types/channel_id",
-                        "description": "channel ID"
                     }
                 }
             },
