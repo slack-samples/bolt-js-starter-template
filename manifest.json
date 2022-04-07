@@ -55,5 +55,38 @@
         "socket_mode_enabled": true,
         "token_rotation_enabled": false
     },
+    "functions": {
+        "reverse": {
+            "title": "bolt-reverse",
+            "description": "Takes a string and reverses it",
+            "input_parameters": {
+                "required": [
+                    "stringToReverse",
+                    "channel_id"
+                ],
+                "properties": {
+                    "stringToReverse": {
+                        "type": "string",
+                        "description": "The string to reverse"
+                    },
+                    "channel_id": {
+                        "type": "slack#/types/channel_id",
+                        "description": "channel ID"
+                    }
+                }
+            },
+            "output_parameters": {
+                "required": [
+                    "reverseString"
+                ],
+                "properties": {
+                    "reverseString": {
+                        "type": "string",
+                        "description": "The string in reverse"
+                    }
+                }
+            }
+        }
+    },
     "outgoing_domains": []
 }
