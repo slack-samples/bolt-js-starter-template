@@ -7,7 +7,7 @@ const reverseString = async ({ event, client, success, error }) => {
       text: `You reversed ${stringToReverse} to ${reversed}`,
     });
     // call success callback with function outputs
-    await success({ reversed });
+    await success({ reverseString: reversed });
   } catch (err) {
     // call error callback with function outputs
     await error('There was an issue');
