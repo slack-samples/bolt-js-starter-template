@@ -7,8 +7,6 @@ config();
 /** Initialization */
 const app = new App({
   logLevel: LogLevel.DEBUG,
-
-  // Required to locally run Bolt 1.0 app
   token: process.env.SLACK_BOT_TOKEN,
   socketMode: true,
   appToken: process.env.SLACK_APP_TOKEN,
