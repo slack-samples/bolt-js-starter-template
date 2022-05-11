@@ -1,15 +1,5 @@
 {
   "hooks": {
-    "get-manifest": "node node_modules/@slack/bolt/dist/cli/manifest.js",
-    "start": "node node_modules/@slack/bolt/dist/cli/run.js"
-  },
-  "config": {
-    "watch": {
-      "filter-regex": "^manifest\\.(ts|js|json)$",
-      "paths": [
-        "."
-      ]
-    },
-    "sdk-managed-connection-enabled": true
+    "get-hooks": "npm exec --package=@slack/bolt slack-cli-get-hooks"
   }
 }
