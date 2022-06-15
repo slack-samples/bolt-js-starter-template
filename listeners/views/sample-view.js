@@ -1,4 +1,6 @@
 const sampleViewCallback = async ({ ack, view, body, client }) => {
+  // For more information about updating and pushing views views: https://slack.dev/bolt-js/concepts#updating-pushing-views
+  // For more information about listening to views: https://slack.dev/bolt-js/concepts#view-submissions
   await ack();
 
   try {

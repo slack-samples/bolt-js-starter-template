@@ -1,5 +1,6 @@
 const appHomeOpenedCallback = async ({ client, event }) => {
   // Ignore the `app_home_opened` event for anything but the Home tab
+  // For more information about using events: https://slack.dev/bolt-js/concepts#event-listening
   if (event.tab !== 'home') return;
 
   try {

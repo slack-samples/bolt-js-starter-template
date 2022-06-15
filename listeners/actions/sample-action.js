@@ -1,4 +1,6 @@
 const sampleActionCallback = async ({ ack, client, body }) => {
+  // For more information about listening to actions: https://slack.dev/bolt-js/concepts#action-listening
+  // For more information about responding to actions: https://slack.dev/bolt-js/concepts#action-respond
   try {
     await ack();
     await client.views.update({
