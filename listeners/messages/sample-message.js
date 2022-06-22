@@ -1,6 +1,11 @@
+/*
+   Learn how to:
+   -> listen messages on Bolt:  https://slack.dev/bolt-js/concepts#message-listening
+   -> send messages on Bolt: https://slack.dev/bolt-js/concepts#message-sending
+   For more information about messages: https://api.slack.com/messaging
+ */
+
 const sampleMessageCallback = async ({ context, say }) => {
-  // For more information about listening messages: https://slack.dev/bolt-js/concepts#message-listening
-  // For more information about sending messages: https://slack.dev/bolt-js/concepts#message-sending
   try {
     const greeting = context.matches[0];
     await say(`${greeting}, how are you?`);

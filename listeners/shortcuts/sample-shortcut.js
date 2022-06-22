@@ -1,5 +1,9 @@
+/*
+   Learn how to:
+   -> use shortcuts on Bolt:  https://slack.dev/bolt-js/concepts#shortcuts
+   For more information about shortcuts: https://api.slack.com/interactivity/shortcuts
+*/
 const sampleShortcutCallback = async ({ shortcut, ack, client }) => {
-  // For more information about shortcuts: https://slack.dev/bolt-js/concepts#shortcuts
   try {
     const { trigger_id } = shortcut;
 

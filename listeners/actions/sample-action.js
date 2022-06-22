@@ -1,6 +1,11 @@
+/*
+   Learn how to:
+   -> listen to actions on Bolt:  https://slack.dev/bolt-js/concepts#action-listening
+   -> respond to actions on Bolt: https://slack.dev/bolt-js/concepts#action-respond
+   For more information about interactivity: https://api.slack.com/interactivity
+ */
+
 const sampleActionCallback = async ({ ack, client, body }) => {
-  // For more information about listening to actions: https://slack.dev/bolt-js/concepts#action-listening
-  // For more information about responding to actions: https://slack.dev/bolt-js/concepts#action-respond
   try {
     await ack();
     await client.views.update({
