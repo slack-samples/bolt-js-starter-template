@@ -1,3 +1,10 @@
+/*
+   Learn how to:
+   -> update and push views with Bolt:  https://slack.dev/bolt-js/concepts#updating-pushing-views
+   -> listen to views with Bolt: https://slack.dev/bolt-js/concepts#view-submissions
+   For more information about views: https://api.slack.com/reference/surfaces/views
+*/
+
 const sampleViewCallback = async ({ ack, view, body, client }) => {
   await ack();
 

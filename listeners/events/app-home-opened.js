@@ -1,3 +1,9 @@
+/*
+   Learn how to:
+   -> use events with Bolt:  https://slack.dev/bolt-js/concepts#event-listening
+   For more information about using App Home events: https://api.slack.com/surfaces/tabs/events
+*/
+
 const appHomeOpenedCallback = async ({ client, event }) => {
   // Ignore the `app_home_opened` event for anything but the Home tab
   if (event.tab !== 'home') return;

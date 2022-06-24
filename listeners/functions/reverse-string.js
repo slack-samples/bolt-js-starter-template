@@ -1,3 +1,5 @@
+// For more information about functions: https://api.slack.com/future/functions
+
 const reverseString = async ({ event, success, error }) => {
   const { stringToReverse } = event.inputs;
   const reversed = stringToReverse.split('').reverse().join('');
