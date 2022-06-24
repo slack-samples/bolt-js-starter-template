@@ -1,7 +1,6 @@
 /*
-
    Learn how to:
-   -> use events on Bolt:  https://slack.dev/bolt-js/concepts#event-listening
+   -> use events with Bolt:  https://slack.dev/bolt-js/concepts#event-listening
    For more information about using App Home events: https://api.slack.com/surfaces/tabs/events
 */
 

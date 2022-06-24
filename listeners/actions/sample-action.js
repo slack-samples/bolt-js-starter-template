@@ -1,7 +1,7 @@
 /*
    Learn how to:
-   -> listen to actions on Bolt:  https://slack.dev/bolt-js/concepts#action-listening
-   -> respond to actions on Bolt: https://slack.dev/bolt-js/concepts#action-respond
+   -> listen to actions with Bolt:  https://slack.dev/bolt-js/concepts#action-listening
+   -> respond to actions with Bolt: https://slack.dev/bolt-js/concepts#action-respond
    For more information about interactivity: https://api.slack.com/interactivity
  */
 

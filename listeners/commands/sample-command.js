@@ -1,6 +1,6 @@
 /*
   Learn how to:
-  -> use commands on Bolt:   https://slack.dev/bolt-js/concepts#commands
+  -> use commands with Bolt:  https://slack.dev/bolt-js/concepts#commands
   For more information about slash commands: https://api.slack.com/interactivity/slash-commands
 */
 
