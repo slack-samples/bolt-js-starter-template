@@ -22,7 +22,7 @@
     "url": "https://github.com/slackapi/bolt-js-template/issues"
   },
   "dependencies": {
-    "@slack/bolt": "slackapi/bolt-js#future",
+    "@slack/bolt": "slackapi/bolt-js#future-update-get-manifest-hook",
     "dotenv": "~16.0.0"
   },
   "devDependencies": {
