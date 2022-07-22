@@ -1,7 +1,4 @@
-# To add in a CODEOWNER, please add the following under the Global Rule line (remove the #):
-# *           @your-username
-
-# To add in multiple CODEOWNERS, please follow the following format:
-# *           @username-1 @username-2
-
-# Global rule:
+# Code owners are the default owners for everything in
+# this repository. The owners listed below will be requested for
+# review when a pull request is opened.
+*       @global-owner1 @global-owner2
