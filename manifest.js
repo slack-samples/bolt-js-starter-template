@@ -26,19 +26,20 @@ const ReverseFunction = DefineFunction({
 });
 
 module.exports = Manifest({
-  slackHosted: false,
+  runOnSlack: false,
   name: 'Bolt Template App',
   displayName: 'Bolt Template App',
   description: 'Reverse a string',
   longDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget neque sed nibh efficitur fermentum et nec est. Pellentesque pulvinar leo purus, sit amet aliquam libero gravida vel. Vestibulum justo augue, elementum sit amet dignissim eget, porttitor id urna. Phasellus non nibh at tortor facilisis gravida et nec ex. Suspendisse potenti.',
   botScopes: ['channels:history', 'chat:write', 'commands'],
+  tokenManagementEnabled: true,
+  socketModeEnabled: true,
   functions: [ReverseFunction],
-
   features: {
     appHome: {
-      home_tab_enabled: true,
-      messages_tab_enabled: false,
-      messages_tab_read_only_enabled: true,
+      homeTabEnabled: true,
+      messagesTabEnabled: false,
+      messagesTabReadOnlyEnabled: false,
     },
     botUser: {
       always_online: false,
@@ -54,18 +55,13 @@ module.exports = Manifest({
       description: 'Runs a sample command',
       should_escape: false,
     }],
-
   },
-
   settings: {
     interactivity: {
       is_enabled: true,
     },
     org_deploy_enabled: false,
   },
-
   eventSubscriptions: { bot_events: ['app_home_opened', 'message.channels'] },
-  socketModeEnabled: true,
   tokenRotationEnabled: false,
-
 });
