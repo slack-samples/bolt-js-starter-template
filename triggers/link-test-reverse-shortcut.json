@@ -1,0 +1,13 @@
+{
+  "type": "shortcut",
+  "name": "Test Reverse Trigger",
+  "description": "Start reverse trigger modal",
+  "workflow": "#/workflows/test_reverse",
+  "shortcut": {},
+  "inputs": {
+    "interactivity": {
+  "value": "{{data.interactivity}}",
+  "hidden": true
+    }
+  }
+}

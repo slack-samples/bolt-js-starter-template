@@ -1,4 +1,4 @@
-const { DefineFunction, Manifest, Schema } = require('@slack/bolt');
+const { DefineFunction, DefineWorkflow, Manifest, Schema } = require('@slack/bolt');
 
 const ReverseFunction = DefineFunction({
   callback_id: 'reverse',
@@ -25,6 +25,53 @@ const ReverseFunction = DefineFunction({
   },
 });
 
+const TestReverseWorkflow = DefineWorkflow({
+  callback_id: "test_reverse",
+  title: "Test Reverse Function",
+  description: "test the reverse function",
+  input_parameters: {
+    properties: {
+      interactivity: {
+        type: Schema.slack.types.interactivity,
+      },
+    },
+    required: [],
+  },
+});
+  
+// TODO: Add in SendForm function to Schema.slack.function in Deno SDK
+const formData = TestReverseWorkflow.addStep("slack#/functions/send_form", {
+  title: "Reverse string form",
+  submit_label: "Submit form",
+  description: "Submit a string to reverse",
+  interactivity: TestReverseWorkflow.inputs.interactivity,
+  fields: {
+    elements: [
+      {
+        name: "stringInput",
+        title: "String input",
+        type: Schema.types.string,
+        is_required: true,
+      },
+      {
+        name: "channel",
+        title: "Post in",
+        type: Schema.slack.types.channel_id,
+        is_required: true,
+      },
+    ]
+  },
+});
+
+const reverseStep = TestReverseWorkflow.addStep(ReverseFunction, {
+  stringToReverse: formData.outputs.fields.stringInput,
+});
+  
+TestReverseWorkflow.addStep(Schema.slack.functions.SendMessage, {
+  channel_id: formData.outputs.fields.channel,
+  message: reverseStep.outputs.reverseString,
+});
+
 module.exports = Manifest({
   runOnSlack: false,
   name: 'Bolt Template App',
@@ -35,6 +82,7 @@ module.exports = Manifest({
   tokenManagementEnabled: true,
   socketModeEnabled: true,
   functions: [ReverseFunction],
+  workflows: [TestReverseWorkflow],
   features: {
     appHome: {
       homeTabEnabled: true,
