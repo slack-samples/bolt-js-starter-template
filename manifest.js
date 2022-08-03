@@ -38,9 +38,8 @@ const TestReverseWorkflow = DefineWorkflow({
     required: [],
   },
 });
-  
-// TODO: Add in SendForm function to Schema.slack.function in Deno SDK
-const formData = TestReverseWorkflow.addStep("slack#/functions/send_form", {
+
+const formData = TestReverseWorkflow.addStep(Schema.slack.functions.OpenForm, {
   title: "Reverse string form",
   submit_label: "Submit form",
   description: "Submit a string to reverse",
