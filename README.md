@@ -15,17 +15,30 @@ Before getting started, make sure you have a development workspace where you hav
 #### Environment Variables
 Before you can run the app, you'll need to store some environment variables.
 
-1. Copy `.env.sample` to `.env`
+1. Rename `.env.sample` to `.env`
 2. Open your apps configuration page from [this list](https://api.slack.com/apps), click *OAuth & Permissions* in the left hand menu, then copy the *Bot User OAuth Token* into your `.env` file under `SLACK_BOT_TOKEN`
 3. Click *Basic Information* from the left hand menu and follow the steps in the *App-Level Tokens* section to create an app-level token with the `connections:write` scope. Copy that token into your `.env` as `SLACK_APP_TOKEN`.
 
-#### Install Dependencies
+### Setup Your Local Project
+```zsh
+# Clone this project onto your machine
+git clone https://github.com/slack-samples/bolt-js-starter-template.git
 
-`npm install`
+# Change into this project directory
+cd bolt-js-starter-template
 
-#### Run Bolt Server
+# Install dependencies
+npm install
 
-`npm start`
+# Run Bolt server
+npm start
+```
+
+#### Linting
+```zsh
+# Run eslint for code formatting and linting
+npm run lint
+```
 
 ## Project Structure
 
