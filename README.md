@@ -5,12 +5,10 @@ This is a Slack app template that uses Bolt for Javascript. It is alo compatible
 * [Slack Function](), [Workflows](), and [Triggers]()
 
 
-## Installation
-
 #### Prerequisites
 * [Slack Command Line Tool](https://api.slack.com/future/quickstart)- To use this template, you will need to have installed and configured the Slack CLI. 
 Do this by following our [Quickstart Guide](https://api.slack.com/future/quickstart).
-* Accept the Beta ToS
+* Accept the Slack Platform Beta Terms of Service
 
 ### Setup This Project
 
