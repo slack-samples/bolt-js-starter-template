@@ -1,5 +1,6 @@
 const { DefineFunction, DefineWorkflow, Manifest, Schema } = require('@slack/bolt');
 
+// Define a function
 const ReverseFunction = DefineFunction({
   callback_id: 'reverse',
   title: 'Reverse',
@@ -25,6 +26,7 @@ const ReverseFunction = DefineFunction({
   },
 });
 
+// Functions 
 const TestReverseWorkflow = DefineWorkflow({
   callback_id: 'test_reverse',
   title: 'Test Reverse Function',
