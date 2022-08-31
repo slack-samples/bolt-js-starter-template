@@ -1,7 +1,6 @@
 const { Manifest } = require('@slack/bolt');
 const { GreetingWorkflow } = require('./workflow/greeting');
 
-
 module.exports = Manifest({
   runOnSlack: false,
   name: 'Bolt Template App',

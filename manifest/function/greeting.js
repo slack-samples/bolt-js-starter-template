@@ -22,15 +22,6 @@ const GreetingFunctionDefinition = DefineFunction({
     },
     required: ['message'],
   },
-  output_parameters: {
-    properties: {
-      greeting: {
-        type: Schema.types.string,
-        description: 'Greeting for the recipient',
-      },
-    },
-    required: ['greeting'],
-  },
 });
 
 module.exports = { GreetingFunctionDefinition };
