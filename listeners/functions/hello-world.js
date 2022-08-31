@@ -6,16 +6,16 @@ const { GreetingFunctionDefinition } = require('../../manifest/function/greeting
 
 // Here is the work we want to do!
 const helloWorld = async ({ event, client, complete }) => {
-  const { recipient, message } = event.inputs;
-  const salutations = ["Hello", "Hi", "Howdy", "Hola", "Salut"];
+  const { recipient, channel, message } = event.inputs;
+  const salutations = ['Hello', 'Hi', 'Howdy', 'Hola', 'Salut'];
   const salutation =
     salutations[Math.floor(Math.random() * salutations.length)];
-
   try {
     await client.chat.postMessage({
-      channel: manager,
-      text: `${salutation}, <@${recipient}>! :wave: Someone sent the following greeting: \n\n>${message}`;,
+      channel: channel,
+      text: `${salutation}, <@${recipient}>! :wave: Someone sent the following greeting: \n\n>${message}`,
     });
+    complete();
   } catch (err) {
     // Complete function with an error
     await complete({ error: `There was an issue: ${err}` });

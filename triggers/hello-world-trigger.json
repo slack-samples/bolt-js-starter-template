@@ -1,0 +1,16 @@
+{
+  "type": "shortcut",
+  "name": "Hello World",
+  "description": "Start hello world flow",
+  "workflow": "#/workflows/greeting_workflow",
+  "shortcut": {},
+  "inputs": {
+    "interactivity": {
+      "value": "{{data.interactivity}}",
+      "hidden": true
+    },
+    "channel": {
+      "value": "{{data.channel_id}}"
+    }
+  }
+}
