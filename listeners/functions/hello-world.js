@@ -8,11 +8,10 @@ const { GreetingFunctionDefinition } = require('../../manifest/function/greeting
 const helloWorld = async ({ event, client, complete }) => {
   const { recipient, channel, message } = event.inputs;
   const salutations = ['Hello', 'Hi', 'Howdy', 'Hola', 'Salut'];
-  const salutation =
-    salutations[Math.floor(Math.random() * salutations.length)];
+  const salutation = salutations[Math.floor(Math.random() * salutations.length)];
   try {
     await client.chat.postMessage({
-      channel: channel,
+      channel,
       text: `${salutation}, <@${recipient}>! :wave: Someone sent the following greeting: \n\n>${message}`,
     });
     complete();
