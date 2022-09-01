@@ -1,0 +1,16 @@
+{
+  "type": "shortcut",
+  "name": "Sample Trigger",
+  "description": "Start our sample workflow",
+  "workflow": "#/workflows/sample_workflow",
+  "shortcut": {},
+  "inputs": {
+    "interactivity": {
+      "value": "{{data.interactivity}}",
+      "hidden": true
+    },
+    "channel": {
+      "value": "{{data.channel_id}}"
+    }
+  }
+}

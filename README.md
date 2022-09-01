@@ -1,67 +1,111 @@
 # Bolt for JavaScript Template App
 
-This is a generic Bolt for JavaScript template app used to build out Slack apps.
+This is a Slack app template that uses Bolt for Javascript. It is compatible with next-generation Slack Platform tools and features (currently in beta)
+* [Slack CLI](https://api.slack.com/future/overview)
+* [Slack Function](), [Workflows](), and [Triggers]()
 
-Before getting started, make sure you have a development workspace where you have permissions to install apps. If you don’t have one setup, go ahead and [create one](https://slack.com/create).
-## Installation
+Before getting started, make sure you have a development workspace where you have permissions to install apps. If you don’t have one set up, go ahead and
+[create one](https://slack.com/create). 
 
-#### Create a Slack App
-1. Open [https://api.slack.com/apps/new](https://api.slack.com/apps/new) and choose "From an app manifest"
-2. Choose the workspace you want to install the application to
-3. Copy the contents of [manifest.json](./manifest.json) into the text box that says `*Paste your manifest code here*` (within the JSON tab) and click *Next*
-4. Review the configuration and click *Create*
-5. Click *Install to Workspace* and *Allow* on the screen that follows. You'll then be redirected to the App Configuration dashboard.
+**beta** [Accept the Slack Platform Beta Terms of Service](https://slack.com/admin/settings#hermes_permissions) (ToS) on your development workspace
 
-#### Environment Variables
-Before you can run the app, you'll need to store some environment variables.
+## Setup
+#### Prerequisites
+* A recent version of [node](https://nodejs.org/en/)
+  * With nvm: `nvm install node && nvm alias default node`
+  * With brew: `brew install node`
+* Install the [Slack Command Line Tool](https://api.slack.com/future/quickstart)
+  * Install from command line: `$ curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash`
+  * Login with the CLI to your Slack workspace: `slack login`. Follow the instructions in terminal to complete authorization.
 
-1. Copy `.env.sample` to `.env`
-2. Open your apps configuration page from [this list](https://api.slack.com/apps), click *OAuth & Permissions* in the left hand menu, then copy the *Bot User OAuth Token* into your `.env` file under `SLACK_BOT_TOKEN`
-3. Click *Basic Information* from the left hand menu and follow the steps in the *App-Level Tokens* section to create an app-level token with the `connections:write` scope. Copy that token into your `.env` as `SLACK_APP_TOKEN`.
+### 
 
-#### Install Dependencies
+```zsh
+# Clone this project onto your machine
+$ slack create my-app -t slack-samples/bolt-js-starter-template -b future
 
-`npm install`
+# Change into this project directory
+$ cd my-app
 
-#### Run Bolt Server
+# Install dependencies
+# The CLI will attempt to install dependencies on create but you can also run 
+$ npm install
 
-`npm start`
+# Run app locally
+$ slack run
 
+```
+#### Local run
+
+While building your app, see your changes propagated to your workspace in real-time with `slack run`.
+
+`slack run` creates and installs your app to your workspace, ands starts it in development mode (a.k.a SocketMode).
+
+You'll know your app is running locally when you see the following:
+
+```zsh
+$ slack run
+...
+Updating dev app install for workspace <Workspace Name>
+Preparing local run in developer mode (Socket Mode)
+/path/to/your/app/app.js
+[DEBUG]  bolt-app initialized
+⚡️ Bolt app is running! ⚡️
+```
+
+When you want to stop your app, use `Ctrl+c` in the command prompt.
+
+
+### Try the app out
+
+```zsh
+# Create your trigger
+$ slack triggers create --trigger-def="triggers/hello-world-trigger.json"
+
+⚡ Trigger created
+  Trigger ID:   [ID for trigger]
+  Trigger Type: [type of rigger]
+  Trigger Name: [name of trigger]
+  URL:  [some URL]
+```
+
+Paste the URL into a public channel in your development workspace and try running the workflow!
+
+
+***
 ## Project Structure
-
-### `manifest.json`
-
-`manifest.json` is a configuration for Slack apps. With a manifest, you can create an app with a pre-defined configuration, or adjust the configuration of an existing app.
 
 ### `app.js`
 
-`app.js` is the entry point for the application and is the file you'll run to start the server. This project aims to keep this file as thin as possible, primarily using it as a way to route inbound requests.
+`app.js` is the entry point for your application and is the file you run to start the server. This project aims to keep this file as thin as possible, primarily using it as a way to route inbound requests from Slack.
 
 ### `/listeners`
 
-Every incoming request is routed to a "listener". Inside this directory, we group each listener based on the Slack Platform feature used, so `/listeners/shortcuts` handles incoming [Shortcuts](https://api.slack.com/interactivity/shortcuts) requests, `/listeners/views` handles [View submissions](https://api.slack.com/reference/interaction-payloads/views#view_submission) and so on.
+Each incoming request is routed to a "listener" you define. Inside this directory, see listeners grouped based on the Slack Platform feature used. 
+
+In this project, our `/listeners` directory contains a `/functions` directory which contains a simple example of a Slack Function. 
+  * `./functions/hello-world.js`: Configuration for posting a greeting message to the desired channel once it has been submitted through the form modal. [^1] 
+
+### `/manifest`[^1]
+
+Declare your app's configuration in code. Make your changes here, and we'll update your app manifest with Slack when you `slack run`. 
+
+### `/triggers`[^1]
+
+Declare a trigger for any workflows published by our app
 
 
-## App Distribution / OAuth
+<!--
+#### Deploying your app
+Please refer to our deployment guide for next-generation Slack apps [here](https://slack.dev/bolt-js/future/deploy-your-app).
 
-Only implement OAuth if you plan to distribute your application across multiple workspaces. A separate `app-oauth.js` file can be found with relevant OAuth settings.
+#### Resources
+To learn more about developing with Bolt for JS and the CLI, you can visit the following guides:
 
-When using OAuth, Slack requires a public URL where it can send requests. In this template app, we've used [`ngrok`](https://ngrok.com/download). Checkout [this guide](https://ngrok.com/docs#getting-started-expose) for setting it up.
+* [Creating a new app with the CLI]()
+* [Configuring your app]()
+* [Developing locally]()
+* [Deployment](https://slack.dev/bolt-js/future/deploy-your-app)
+ -->
 
-Start `ngrok` to access the app on an external network and create a redirect URL for OAuth. 
-
-```
-ngrok http 3000
-```
-
-This output should include a forwarding address for `http` and `https` (we'll use `https`). It should look something like the following:
-
-```
-Forwarding   https://3cb89939.ngrok.io -> http://localhost:3000
-```
-
-Navigate to **OAuth & Permissions** in your app configuration and click **Add a Redirect URL**. The redirect URL should be set to your `ngrok` forwarding address with the `slack/oauth_redirect` path appended. For example:
-
-```
-https://3cb89939.ngrok.io/slack/oauth_redirect
-```
+[^1]: These parts of the app are beta features. See [api.slack.com/future](https://api.slack.com/future) for more information
