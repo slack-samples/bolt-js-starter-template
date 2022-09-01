@@ -6,7 +6,6 @@ module.exports = Manifest({
   name: 'Bolt Template App',
   displayName: 'Bolt Template App',
   description: 'A starter app template built with Bolt JS',
-  longDescription: 'Sometimes fate is like a small sandstorm that keeps changing directions. You change direction but the sandstorm chases you. You turn again, but the storm adjusts. Over and over you play this out, like some ominous dance with death just before dawn. Why? Because this storm isn’t something that blew in from far away, something that has nothing to do with you. This storm is you.',
   botScopes: ['channels:history', 'chat:write', 'commands', 'chat:write.public'],
   socketModeEnabled: true,
   workflows: [GreetingWorkflow],

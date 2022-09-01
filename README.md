@@ -7,7 +7,7 @@ This is a Slack app template that uses Bolt for Javascript. It is compatible wit
 Before getting started, make sure you have a development workspace where you have permissions to install apps. If you don’t have one set up, go ahead and
 [create one](https://slack.com/create). 
 
-**beta** Accept the Slack Platform Beta Terms of Service (ToS) on your development workspace
+**beta** [Accept the Slack Platform Beta Terms of Service](https://slack.com/admin/settings#hermes_permissions) (ToS) on your development workspace
 
 ## Setup
 #### Prerequisites
