@@ -1,15 +1,15 @@
 const { DefineFunction, Schema } = require('@slack/bolt');
 
-const GreetingFunctionDefinition = DefineFunction({
-  callback_id: 'greeting_function',
+const SampleFunctionDefinition = DefineFunction({
+  callback_id: 'sample_function_id',
   title: 'Send a greeting',
   description: 'Send greeting to channel',
-  source_file: 'functions/greeting_function.ts',
+  source_file: 'functions/sample-function.ts',
   input_parameters: {
     properties: {
       recipient: {
         type: Schema.slack.types.user_id,
-        description: 'Greeting recipient',
+        description: 'Send greeting to this recipient',
       },
       channel: {
         type: Schema.slack.types.channel_id,
@@ -24,4 +24,4 @@ const GreetingFunctionDefinition = DefineFunction({
   },
 });
 
-module.exports = { GreetingFunctionDefinition };
+module.exports = { SampleFunctionDefinition };

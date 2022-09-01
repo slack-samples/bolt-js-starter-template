@@ -1,8 +1,8 @@
 {
   "type": "shortcut",
-  "name": "Hello World",
-  "description": "Start hello world flow",
-  "workflow": "#/workflows/greeting_workflow",
+  "name": "Sample Trigger",
+  "description": "Start our sample workflow",
+  "workflow": "#/workflows/sample_workflow",
   "shortcut": {},
   "inputs": {
     "interactivity": {

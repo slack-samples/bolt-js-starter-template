@@ -1,8 +1,8 @@
 // For more information about functions: https://api.slack.com/future/functions
 const { SlackFunction } = require('@slack/bolt');
 
-// Get our Approval Function from the manifest!
-const { GreetingFunctionDefinition } = require('../../manifest/function/greeting');
+// Get our Function Definition from the manifest!
+const { SampleFunctionDefinition } = require('../../manifest/function/sample-function');
 
 // Here is the work we want to do!
 const helloWorld = async ({ event, client, complete }) => {
@@ -22,7 +22,7 @@ const helloWorld = async ({ event, client, complete }) => {
   }
 };
 
-// Let's register a new Slack Function with helloWorld as its handler
-const helloWorldFunc = new SlackFunction(GreetingFunctionDefinition.id, helloWorld);
+// Let's create a new Slack Function with helloWorld as its handler
+const helloWorldFunc = new SlackFunction(SampleFunctionDefinition.id, helloWorld);
 
 module.exports = { helloWorldFunc };

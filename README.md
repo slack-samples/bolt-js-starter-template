@@ -63,10 +63,10 @@ When you want to stop your app, use `Ctrl+c` in the command prompt.
 $ slack triggers create --trigger-def="triggers/hello-world-trigger.json"
 
 ⚡ Trigger created
-     Trigger ID:   [ID for trigger]
-     Trigger Type: [type of rigger]
-     Trigger Name: [name of trigger]
-     Shortcut URL:  [some URL]
+  Trigger ID:   [ID for trigger]
+  Trigger Type: [type of rigger]
+  Trigger Name: [name of trigger]
+  URL:  [some URL]
 ```
 
 Paste the URL into a public channel in your development workspace and try running the workflow!
