@@ -1,47 +1,51 @@
 # Bolt for JavaScript Template App
 
-This is a Slack app template that uses Bolt for Javascript. It is alo compatible with next-generation Slack Platform tools and features (currently in Beta)
+This is a Slack app template that uses Bolt for Javascript. It is compatible with next-generation Slack Platform tools and features (currently in beta)
 * [Slack CLI](https://api.slack.com/future/overview)
 * [Slack Function](), [Workflows](), and [Triggers]()
 
+Before getting started, make sure you have a development workspace where you have permissions to install apps. If you don’t have one set up, go ahead and
+[create one](https://slack.com/create). 
 
+**beta** Accept the Slack Platform Beta Terms of Service (ToS) on your development workspace
+
+## Setup
 #### Prerequisites
-* [Slack Command Line Tool](https://api.slack.com/future/quickstart)- To use this template, you will need to have installed and configured the Slack CLI. 
-Do this by following our [Quickstart Guide](https://api.slack.com/future/quickstart).
-* Accept the Slack Platform Beta Terms of Service
+* A recent version of [node](https://nodejs.org/en/)
+  * With nvm: `nvm install node && nvm alias default node`
+  * With brew: `brew install node`
+* Install the [Slack Command Line Tool](https://api.slack.com/future/quickstart)
+  * Install from command line: `$ curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash`
+  * Login with the CLI to your Slack workspace: `slack login`. Follow the instructions in terminal to complete authorization.
 
-### Setup Your Project
+### 
 
 ```zsh
 # Clone this project onto your machine
-slack create my-app -t slack-samples/bolt-js-starter-template -b future
+$ slack create my-app -t slack-samples/bolt-js-starter-template -b future
 
 # Change into this project directory
-cd my-app
+$ cd my-app
 
 # Install dependencies
-# The CLI will attempt to install dependencies for you but you can also run 
-npm install
+# The CLI will attempt to install dependencies on create but you can also run 
+$ npm install
 
 # Run app locally
-slack run
-
-# Deploy your app
-# Slack currently doesn't support deployment of Bolt apps
+$ slack run
 
 ```
-#### Running your app locally
+#### Local run
 
-While building your app, see your changes propagated to your 
-workspace in real-time with `slack run`.
+While building your app, see your changes propagated to your workspace in real-time with `slack run`.
 
-Executing `slack run` starts a local development server, syncing changes to 
-your workspace's development version of your app. (You'll know it's the 
-development version because the name has the string `(dev)` appended).
+`slack run` creates and installs your app to your workspace, ands starts it in development mode (a.k.a SocketMode).
 
-Your local development server is ready to go when you see the following:
+You'll know your app is running locally when you see the following:
 
 ```zsh
+$ slack run
+...
 Updating dev app install for workspace <Workspace Name>
 Preparing local run in developer mode (Socket Mode)
 /path/to/your/app/app.js
@@ -49,91 +53,59 @@ Preparing local run in developer mode (Socket Mode)
 ⚡️ Bolt app is running! ⚡️
 ```
 
-When you want to turn off the local development server, use `Ctrl+c` in the command prompt.
+When you want to stop your app, use `Ctrl+c` in the command prompt.
 
-#### Deploying your app
-Please refer to our deployment guide for next-generation Slack apps [here](https://slack.dev/bolt-js/future/deploy-your-app).
 
-### Initialize your Workflow Trigger
-To allow for a workflow to be called in a workspace, create a trigger through a JSON config file which can be found in `triggers/hello-world-trigger.json`. 
+### Try the app out
 
-The contents of the file looks something like this:
+```zsh
+# Create your trigger
+$ slack triggers create --trigger-def="triggers/hello-world-trigger.json"
 
-```
-{
-  "type": "shortcut",
-  "name": "Hello World",
-  "description": "Start hello world flow",
-  "workflow": "#/workflows/greeting_workflow",
-  "shortcut": {},
-  "inputs": {
-    "interactivity": {
-      "value": "{{data.interactivity}}",
-      "hidden": true
-    },
-    "channel": {
-      "value": "{{data.channel_id}}"
-    }
-  }
-}
-```
-
-This file acts as a config for your trigger that specifies what shortcuts and/or workflows are linked to your trigger (in this case, it maps the workflow to the `reeting_workflow` callback ID from the Approval Workflow initialized in `manifest/workflow/greeting.js`).
-
-This file will also define how the trigger shows up in your application - for example, the `name` field will be the name of the trigger when it is surfaced in the Shortcut menu for your app in your workspace.
-
-To create a trigger for your workflow, run the following command:
-```
-slack triggers create --trigger-def="triggers/hello-world-trigger.json"
-```
-
-This trigger will produce a an output that looks like this:
-```
 ⚡ Trigger created
      Trigger ID:   [ID for trigger]
      Trigger Type: [type of rigger]
      Trigger Name: [name of trigger]
      Shortcut URL:  [some URL]
 ```
-To add the trigger to a channel for easy usage, you can add the link trigger URL as a channel bookmark.
 
-#### Adding new triggers
+Paste the URL into a public channel in your development workspace and try running the workflow!
 
-To add new triggers to your app, you’ll need to do the following:
 
-1. Update the `manifest.js` with the desired workflow and/or functionality you’d like linked to your trigger
-2. Run `slack run` so that any new additions to the `manifest.js` file will be detected within the `slack trigger` command.
-3. Create a JSON file in the triggers directory to generate your trigger
-4. Run `slack triggers create --trigger-def="triggers/[json-name].json"`
-
+***
 ## Project Structure
 
 ### `app.js`
 
-`app.js` is the entry point for the application and is the file you'll run to start the server. This project aims to keep this file as thin as possible, primarily using it as a way to route inbound requests.
+`app.js` is the entry point for your application and is the file you run to start the server. This project aims to keep this file as thin as possible, primarily using it as a way to route inbound requests from Slack.
 
 ### `/listeners`
 
-Every incoming request is routed to a "listener". Inside this directory, we group each listener based on the Slack Platform feature used. For this project, our `/listeners` directory contains a `/functions` directory which then holds related actions in an `/actions` directory that are triggered as handlers when a function is called triggered.
+Each incoming request is routed to a "listener" you define. Inside this directory, see listeners grouped based on the Slack Platform feature used. 
 
-### `/listeners/functions/hello-world.js`
+In this project, our `/listeners` directory contains a `/functions` directory which contains a simple example of a Slack Function. 
+  * `./functions/hello-world.js`: Configuration for posting a greeting message to the desired channel once it has been submitted through the form modal. [^1] 
 
-This file contains the configuration for posting a greeting message to the desired channel once it has been submitted through the form modal.
+### `/manifest`[^1]
 
-### `/manifest`
+Declare your app's configuration in code. Make your changes here, and we'll update your app manifest with Slack when you `slack run`. 
 
-This directory contains all related initialization of the app as well as any workflows or functions used in the project. 
+### `/triggers`[^1]
 
-### `/manifest/manifest.js`
+Declare a trigger for any workflows published by our app
 
-`manifest.js` is a configuration for Slack CLI apps using Bolt JS. This file will establish all basic configurations for your application, including app name and description. 
 
-### `/manifest/workflow`
+<!--
+#### Deploying your app
+Please refer to our deployment guide for next-generation Slack apps [here](https://slack.dev/bolt-js/future/deploy-your-app).
 
-The workflow initialization for the Greeting Workflow can be found in `/manifest/workflow/greeting.js`. This includes adding different steps to your workflows to create a series of events (such as opening a modal or messaging someone)
+#### Resources
+To learn more about developing with Bolt for JS and the CLI, you can visit the following guides:
 
-### `/workflows`
-The workflow initialization for Slack Functions are included with `/workflows/approval.js`. This includes adding different steps to your workflows to create a series of events (such as opening a modal or messaging someone)
+* [Creating a new app with the CLI]()
+* [Configuring your app]()
+* [Developing locally]()
+* [Deployment](https://slack.dev/bolt-js/future/deploy-your-app)
+ -->
 
-### `/triggers`
-All trigger configuration files live in here - for this example, `hello-world-trigger.json` is the trigger config for a trigger that starts the workflow initialized in `/manifest/workflow/greeting.js`.
+[^1]: These parts of the app are beta features. See [api.slack.com/future](https://api.slack.com/future) for more information
