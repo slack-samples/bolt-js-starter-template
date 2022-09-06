@@ -40,6 +40,5 @@ module.exports = Manifest({
     interactivity: {
       is_enabled: true,
     },
-    org_deploy_enabled: false,
   },
 });
