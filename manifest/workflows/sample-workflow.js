@@ -1,5 +1,5 @@
 const { DefineWorkflow, Schema } = require('@slack/bolt');
-const { SampleFunctionDefinition } = require('../function/sample-function');
+const { SampleFunctionDefinition } = require('../functions/sample-function');
 
 const SampleWorkflow = DefineWorkflow({
   callback_id: 'sample_workflow',
