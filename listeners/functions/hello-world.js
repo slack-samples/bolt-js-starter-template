@@ -2,7 +2,7 @@
 const { SlackFunction } = require('@slack/bolt');
 
 // Get our Function Definition from the manifest!
-const { SampleFunctionDefinition } = require('../../manifest/function/sample-function');
+const { SampleFunctionDefinition } = require('../../manifest/functions/sample-function');
 
 // Here is the work we want to do!
 const helloWorld = async ({ event, complete }) => {
