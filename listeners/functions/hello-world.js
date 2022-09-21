@@ -11,7 +11,7 @@ const helloWorld = async ({ event, complete }) => {
   const salutation = salutations[Math.floor(Math.random() * salutations.length)];
   try {
     const greeting = `${salutation}, <@${recipient}>! :wave: Someone sent the following greeting: \n\n>${message}`;
-    return { outputs: { greeting } };
+    complete({ outputs: { greeting } });
   } catch (err) {
     // Complete function with an error
     await complete({ error: `There was an issue: ${err}` });
