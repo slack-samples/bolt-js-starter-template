@@ -22,10 +22,10 @@ const SampleFunctionDefinition = DefineFunction({
     properties: {
       greeting: {
         type: Schema.types.string,
-        description: "Greeting for the recipient",
+        description: 'Greeting for the recipient',
       },
     },
-    required: ["greeting"],
+    required: ['greeting'],
   },
 });
 
