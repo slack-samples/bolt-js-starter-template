@@ -44,13 +44,17 @@ const inputForm = SampleWorkflow.addStep(
   },
 );
 
-SampleWorkflow.addStep(
+const greetingFunctionStep = SampleWorkflow.addStep(
   SampleFunctionDefinition,
   {
     recipient: inputForm.outputs.fields.recipient,
-    channel: inputForm.outputs.fields.channel,
     message: inputForm.outputs.fields.message,
   },
 );
+
+SampleWorkflow.addStep(Schema.slack.functions.SendMessage, {
+  channel_id: inputForm.outputs.fields.channel,
+  message: greetingFunctionStep.outputs.greeting,
+});
 
 module.exports = { SampleWorkflow };
