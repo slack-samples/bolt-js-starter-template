@@ -5,16 +5,13 @@ const { SlackFunction } = require('@slack/bolt');
 const { SampleFunctionDefinition } = require('../../manifest/function/sample-function');
 
 // Here is the work we want to do!
-const helloWorld = async ({ event, client, complete }) => {
-  const { recipient, channel, message } = event.inputs;
+const helloWorld = async ({ event, complete }) => {
+  const { recipient, message } = event.inputs;
   const salutations = ['Hello', 'Hi', 'Howdy', 'Hola', 'Salut'];
   const salutation = salutations[Math.floor(Math.random() * salutations.length)];
   try {
-    await client.chat.postMessage({
-      channel,
-      text: `${salutation}, <@${recipient}>! :wave: Someone sent the following greeting: \n\n>${message}`,
-    });
-    complete();
+    const greeting = `${salutation}, <@${recipient}>! :wave: Someone sent the following greeting: \n\n>${message}`;
+    complete({ outputs: { greeting } });
   } catch (err) {
     // Complete function with an error
     await complete({ error: `There was an issue: ${err}` });

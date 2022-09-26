@@ -11,16 +11,21 @@ const SampleFunctionDefinition = DefineFunction({
         type: Schema.slack.types.user_id,
         description: 'Send greeting to this recipient',
       },
-      channel: {
-        type: Schema.slack.types.channel_id,
-        description: 'Channel to send message to',
-      },
       message: {
         type: Schema.types.string,
         description: 'Message to the recipient',
       },
     },
     required: ['message'],
+  },
+  output_parameters: {
+    properties: {
+      greeting: {
+        type: Schema.types.string,
+        description: 'Greeting for the recipient',
+      },
+    },
+    required: ['greeting'],
   },
 });
 
