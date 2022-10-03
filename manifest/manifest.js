@@ -1,5 +1,5 @@
 const { Manifest } = require('@slack/bolt');
-const { SampleWorkflow } = require('./workflow/sample-workflow');
+const { SampleWorkflow } = require('./workflows/sample-workflow');
 
 /**
  * The app manifest contains the app's configuration. This
