@@ -1,6 +1,6 @@
 # Bolt for JavaScript Template App
 
-This app contains a sample JavaScript project for use on Slack's
+This app contains a sample Bolt for JavaScript project for use on Slack's
 [next-generation hosted platform](https://api.slack.com/future). The project demonstrates how to use a [function](https://slack.dev/bolt-js/future/custom-functions), [workflow](https://slack.dev/bolt-js/future/workflows), and [trigger](https://slack.dev/bolt-js/future/triggers) to send a randomized greeting along with an inputted message. The message will tag a specified user and be sent to a channel of the requester's choice.
 
 
