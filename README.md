@@ -1,8 +1,7 @@
 # Bolt for JavaScript Template App
 
-This is a Slack app template that uses Bolt for Javascript. It is compatible with next-generation Slack Platform tools and features (currently in beta)
-* [Slack CLI](https://api.slack.com/future/overview)
-* [Slack Function](), [Workflows](), and [Triggers]()
+This app contains a sample JavaScript project for use on Slack's
+[next-generation hosted platform](https://api.slack.com/future). The project demonstrates how to use a [function](https://slack.dev/bolt-js/future/custom-functions), [workflow](https://slack.dev/bolt-js/future/workflows), and [trigger](https://slack.dev/bolt-js/future/triggers) to send a randomized greeting along with an inputted message. The message will tag a specified user and be sent to a channel of the requester's choice.
 
 
 **Guide Outline**:
@@ -21,8 +20,7 @@ This is a Slack app template that uses Bolt for Javascript. It is compatible wit
 
 ## Supported Workflows
 
-- **Request time off**: Enter details for a time off request and route it to a
-  manager for approval.
+- **Send a greeting**: Enter details in a form to send a randomized greeting along with an inputted message. The message will tag a specified user and be sent to a channel of the requester's choice.
 
 ## Setup
 Before getting started, make sure you have a development workspace where you
@@ -34,7 +32,7 @@ You will also need a recent version of [node](https://nodejs.org/en/). You can i
   * With nvm: `nvm install node && nvm alias default node`
   * With brew: `brew install node`
 
-**For Developer Beta:** Make sure that you also [accept the Slack Platform Beta Terms of Service](https://slack.com/admin/settings#hermes_permissions) (ToS) on your development workspace!
+**For Beta users:** Make sure that you also [accept the Slack Platform Beta Terms of Service](https://slack.com/admin/settings#hermes_permissions) (ToS) on your development workspace!
 
 
 ### Install the Slack CLI
@@ -73,7 +71,7 @@ that Shortcut URLs will be different across each workspace, as well as between
 the Workspace that you'd like to create the Trigger in. Each Workspace has a
 development version (denoted by `(dev)`), as well as a deployed version.
 
-To create a Link Trigger for the "Request Time Off" Workflow, run the following
+To create a Link Trigger for the "Send a Greeting" Workflow, run the following
 command:
 
 ```zsh
@@ -106,7 +104,7 @@ Preparing local run in developer mode (Socket Mode)
 Once running, click the
 [previously created Shortcut URL](#create-a-link-trigger) associated with the
 `(dev)` version of your app. This should start a Workflow that opens a form used
-to collect data around your time off request!
+to collect data around your greeting requests!
 
 To stop running locally, press `<CTRL> + C` to end the process.
 
