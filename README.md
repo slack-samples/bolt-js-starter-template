@@ -55,33 +55,33 @@ $ cd my-app
 
 ## Create a Link Trigger
 
-[Triggers](https://slack.dev/bolt-js/future/triggers) are what cause Workflows to
-run. These Triggers can be invoked by a user, or automatically as a response to
+[Triggers](https://slack.dev/bolt-js/future/triggers) are what cause workflows to
+run. These triggers can be invoked by a user, or automatically as a response to
 an event within Slack.
 
-A [Link Trigger](https://api.slack.com/future/triggers/link) is a type of
-Trigger that generates a **Shortcut URL** which, when posted in a channel or
-added as a bookmark, becomes a link. When clicked, the Link Trigger will run the
-associated Workflow.
+A [link trigger](https://api.slack.com/future/triggers/link) is a type of
+trigger that generates a **Shortcut URL** which, when posted in a channel or
+added as a bookmark, becomes a link. When clicked, the link trigger will run the
+associated workflow.
 
-Link Triggers are _unique to each installed version of your app_. This means
+Link triggers are _unique to each installed version of your app_. This means
 that Shortcut URLs will be different across each workspace, as well as between
 [locally run](#running-your-project-locally) and
-[deployed apps](#deploying-your-app). When creating a Trigger, you must select
-the Workspace that you'd like to create the Trigger in. Each Workspace has a
+[deployed apps](#deploying-your-app). When creating a trigger, you must select
+the Workspace that you'd like to create the trigger in. Each Workspace has a
 development version (denoted by `(dev)`), as well as a deployed version.
 
-To create a Link Trigger for the "Send a Greeting" Workflow, run the following
+To create a link trigger for the "Send a Greeting" workflow, run the following
 command:
 
 ```zsh
 $ slack trigger create --trigger-def="triggers/hello-world-trigger.json"
 ```
 
-After selecting a Workspace, the output provided will include the Link Trigger
+After selecting a Workspace, the output provided will include the link trigger
 Shortcut URL. You can copy and paste this URL into a channel as a message to run the trigger. It will also be automatically added as a Bookmark in your channel.
 
-**Note: this link won't run the Workflow until the app is either running locally
+**Note: this link won't run the workflow until the app is either running locally
 or deployed!** Read on to learn how to run your app locally and eventually
 deploy it to Slack hosting.
 
@@ -103,7 +103,7 @@ Preparing local run in developer mode (Socket Mode)
 
 Once running, click the
 [previously created Shortcut URL](#create-a-link-trigger) associated with the
-`(dev)` version of your app. This should start a Workflow that opens a form used
+`(dev)` version of your app. This should start a workflow that opens a form used
 to collect data around your greeting requests!
 
 To stop running locally, press `<CTRL> + C` to end the process.
@@ -121,7 +121,7 @@ As of right now, Bolt applications cannot be deployed to production using Run on
 
 Each incoming request is routed to a "listener" you define. Inside this directory, see listeners grouped based on the Slack Platform feature used. 
 
-In this project, our `/listeners` directory contains a `/functions` directory which contains a simple example of a Slack Function. 
+In this project, our `/listeners` directory contains a `/functions` directory which contains a simple example of a Slack function. 
   * `./functions/hello-world.js`: Configuration for posting a greeting message to the desired channel once it has been submitted through the form modal. [^1] 
 
 ### `/manifest`[^1]
