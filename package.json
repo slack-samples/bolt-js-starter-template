@@ -22,11 +22,11 @@
     "url": "https://github.com/slackapi/bolt-js-template/issues"
   },
   "dependencies": {
-    "@slack/bolt": "^3.11.3",
+    "@slack/bolt": "^3.13.1",
     "dotenv": "~16.3.1"
   },
   "devDependencies": {
-    "eslint": "~8.24.0",
+    "eslint": "~8.44.0",
     "eslint-config-airbnb-base": "~15.0.0",
     "eslint-plugin-import": "~2.26.0"
   }
