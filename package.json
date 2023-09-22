@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@slack/bolt": "^3.13.1",
-    "dotenv": "~16.0.3"
+    "dotenv": "~16.3.1"
   },
   "devDependencies": {
     "eslint": "~8.44.0",
