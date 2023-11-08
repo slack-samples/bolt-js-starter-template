@@ -51,8 +51,32 @@
         "interactivity": {
             "is_enabled": true
         },
-        "org_deploy_enabled": false,
+        "org_deploy_enabled": true,
         "socket_mode_enabled": true,
         "token_rotation_enabled": false
+    },
+    "functions": {
+        "sample_function": {
+            "title": "Sample function",
+            "description": "Runs sample function",
+            "input_parameters": {
+                "sample_input": {
+                    "type": "string",
+                    "title": "Sample input text",
+                    "description": "Sample input text to use in this step",
+                    "is_required": true,
+                    "name": "sample_input"
+                }
+            },
+            "output_parameters": {
+                "sample_output": {
+                    "type": "string",
+                    "title": "Sample output text",
+                    "description": "Sample output text to use in next step",
+                    "is_required": true,
+                    "name": "sample_output"
+                }
+            }
+        }
     }
 }
