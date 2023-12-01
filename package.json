@@ -22,7 +22,7 @@
     "url": "https://github.com/slackapi/bolt-js-template/issues"
   },
   "dependencies": {
-    "@slack/bolt": "^3.14.0",
+    "@slack/bolt": "^3.16.0",
     "dotenv": "~16.3.1"
   },
   "devDependencies": {
