@@ -1,5 +1,5 @@
 {
-  "name": "bolt-js-template",
+  "name": "bolt-js-starter-template",
   "version": "1.0.0",
   "description": "A scaffold template for Slack apps",
   "main": "app.js",
