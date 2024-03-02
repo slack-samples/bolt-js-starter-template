@@ -1,5 +1,5 @@
 {
-  "name": "bolt-js-template",
+  "name": "bolt-js-starter-template",
   "version": "1.0.0",
   "description": "A scaffold template for Slack apps",
   "main": "app.js",
@@ -16,10 +16,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/slackapi/bolt-js-template.git"
+    "url": "https://github.com/slack-samples/bolt-js-starter-template.git"
   },
   "bugs": {
-    "url": "https://github.com/slackapi/bolt-js-template/issues"
+    "url": "https://github.com/slack-samples/bolt-js-starter-template/issues"
   },
   "dependencies": {
     "@slack/bolt": "^3.17.1",
