@@ -1,5 +1,5 @@
-const { App, LogLevel } = require('@slack/bolt');
-const { ConsoleLogger } = require('@slack/logger');
+const { App } = require('@slack/bolt');
+const { ConsoleLogger, LogLevel } = require('@slack/logger');
 const { config } = require('dotenv');
 const { registerListeners } = require('./listeners');
 
