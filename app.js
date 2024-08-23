@@ -19,6 +19,7 @@ registerListeners(app);
 /** Start the Bolt App */
 (async () => {
   const logger = new ConsoleLogger();
+  logger.setLevel(LogLevel.DEBUG);
   try {
     await app.start();
     logger.info('⚡️ Bolt app is running!');
