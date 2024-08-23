@@ -1,4 +1,4 @@
-const sampleActionCallback = async ({ ack, client, body }) => {
+const sampleActionCallback = async ({ ack, client, body, logger }) => {
   try {
     await ack();
     await client.views.update({
@@ -58,7 +58,7 @@ const sampleActionCallback = async ({ ack, client, body }) => {
       },
     });
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 };
 

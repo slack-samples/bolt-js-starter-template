@@ -1,4 +1,4 @@
-const appHomeOpenedCallback = async ({ client, event }) => {
+const appHomeOpenedCallback = async ({ client, event, logger }) => {
   // Ignore the `app_home_opened` event for anything but the Home tab
   if (event.tab !== 'home') return;
 
@@ -26,7 +26,7 @@ const appHomeOpenedCallback = async ({ client, event }) => {
       },
     });
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 };
 

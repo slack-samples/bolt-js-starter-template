@@ -1,9 +1,9 @@
-const sampleCommandCallback = async ({ ack, respond }) => {
+const sampleCommandCallback = async ({ ack, respond, logger }) => {
   try {
     await ack();
     await respond('Responding to the sample command!');
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 };
 
