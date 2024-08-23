@@ -1,4 +1,5 @@
 const { App, LogLevel } = require('@slack/bolt');
+const { ConsoleLogger } = require('@slack/logger');
 const { config } = require('dotenv');
 const { registerListeners } = require('./listeners');
 
@@ -61,10 +62,11 @@ registerListeners(app);
 
 /** Start Bolt App */
 (async () => {
+  const logger = new ConsoleLogger();
   try {
     await app.start(process.env.PORT || 3000);
-    console.log('⚡️ Bolt app is running! ⚡️');
+    logger.info('⚡️ Bolt app is running!');
   } catch (error) {
-    console.error('Unable to start App', error);
+    logger.error('Failed to start the App', error);
   }
 })();
