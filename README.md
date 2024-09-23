@@ -2,7 +2,13 @@
 
 This is a generic Bolt for JavaScript template app used to build out Slack apps.
 
+## Setup
+
 Before getting started, make sure you have a development workspace where you have permissions to install apps. If you don’t have one setup, go ahead and [create one](https://slack.com/create).
+
+### Developer Program
+Join the [Slack Developer Program](https://api.slack.com/developer-program) for exclusive access to sandbox environments for building and testing your apps, tooling, and resources created to help you build and grow.
+
 ## Installation
 
 #### Create a Slack App
