@@ -42,7 +42,7 @@ npm start
 
 #### Linting
 ```zsh
-# Run eslint for code formatting and linting
+# Run lint for code formatting and linting
 npm run lint
 ```
 
