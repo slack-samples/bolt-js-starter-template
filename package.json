@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "lint": "npx @biomejs/biome check --write *.js listeners"
+    "lint": "npx @biomejs/biome check *.js listeners",
+    "lint:fix": "npx @biomejs/biome check --write *.js listeners"
   },
   "author": "Slack Technologies, LLC",
   "license": "MIT",
