@@ -1,9 +1,9 @@
-const sampleMessageCallback = async ({ context, say }) => {
+const sampleMessageCallback = async ({ context, say, logger }) => {
   try {
     const greeting = context.matches[0];
     await say(`${greeting}, how are you?`);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 };
 
