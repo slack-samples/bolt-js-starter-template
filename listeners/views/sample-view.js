@@ -6,7 +6,7 @@ const sampleViewCallback = async ({ ack, view, body, client }) => {
     const sampleInputValue = formValues.input_block_id.sample_input_id.value;
     const sampleConvoDropdown = formValues.select_channel_block_id.sample_dropdown_id;
 
-    client.chat.postMessage({
+    await client.chat.postMessage({
       channel: sampleConvoDropdown.selected_conversation,
       text: `<@${body.user.id}> submitted the following :sparkles: hopes and dreams :sparkles:: \n\n ${sampleInputValue}`,
     });
