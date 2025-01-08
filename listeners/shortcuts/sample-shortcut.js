@@ -1,4 +1,4 @@
-const sampleShortcutCallback = async ({ shortcut, ack, client }) => {
+const sampleShortcutCallback = async ({ shortcut, ack, client, logger }) => {
   try {
     const { trigger_id } = shortcut;
 
@@ -62,7 +62,7 @@ const sampleShortcutCallback = async ({ shortcut, ack, client }) => {
       },
     });
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 };
 
