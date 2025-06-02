@@ -84,3 +84,7 @@ Navigate to **OAuth & Permissions** in your app configuration and click **Add a 
 ```
 https://3cb89939.ngrok.io/slack/oauth_redirect
 ```
+
+## Make This Template a Code Assistant App
+
+Take your exploration a step further and make this template an [AI app](https://tools.slack.dev/bolt-js/concepts/ai-apps) with the use of a [Hugging Face](https://huggingface.co) model. Follow [this tutorial](https://tools.slack.dev/bolt-js/tutorials/code-assistant) to find out how.
