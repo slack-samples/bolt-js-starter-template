@@ -7,27 +7,23 @@
     "env": {
       "SLACK_BOT_TOKEN": {
         "description": "Bot User OAuth Access Token",
-        "required": true,
-        "value": ""
+        "required": true
       },
       "SLACK_SIGNING_SECRET": {
         "description": "Slack Signing Secret",
-        "required": true,
-        "value": ""
+        "required": true
       },
       "SLACK_APP_TOKEN": {
         "description": "Slack App Token",
-        "required": true,
-        "value": ""
+        "required": true
       }
     },
     "formation": {
       "worker": {
         "quantity": 1,
-        "size": "free"
+        "size": "eco"
       }
     },
-    
     "successful_url": "/"
   }
   
