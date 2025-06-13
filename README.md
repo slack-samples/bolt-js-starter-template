@@ -65,6 +65,13 @@ Use the `Deploy to Heroku` button below to launch this app on Heroku.
 Ensure your Heroku config vars include the required Slack env variables.
 
 ## Deploy to Heroku
+<!--
+  NOTE: This Deploy to Heroku button currently points to my personal fork
+  to allow testing of the latest changes.
+  Before merging this PR, be sure to update the URL to point to the
+  official Slack bolt-js-starter-template repository.
+-->
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/allhaile/bolt-js-starter-template)
 
 ## App Distribution / OAuth
