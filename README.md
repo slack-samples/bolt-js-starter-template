@@ -2,6 +2,10 @@
 
 This is a generic Bolt for JavaScript template app used to build out Slack apps.
 
+## Deploy to Heroku
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/slack-samples/bolt-js-starter-template)
+
+
 ## Setup
 
 Before getting started, make sure you have a development workspace where you have permissions to install apps. If you don’t have one setup, go ahead and [create one](https://slack.com/create).

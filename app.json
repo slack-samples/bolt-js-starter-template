@@ -1,0 +1,32 @@
+{
+    "name": "bolt-js-starter-template",
+    "description": "A Slack Bolt JS starter app deployed via Heroku",
+    "repository": "https://github.com/slack-samples/bolt-js-starter-template",
+    "logo": "https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png",
+    "keywords": ["node", "slack", "bolt", "javascript", "starter"],
+    "env": {
+      "SLACK_BOT_TOKEN": {
+        "description": "Bot User OAuth Access Token",
+        "required": true,
+        "value": ""
+      },
+      "SLACK_SIGNING_SECRET": {
+        "description": "Slack Signing Secret",
+        "required": true,
+        "value": ""
+      },
+      "PORT": {
+        "description": "Port for the web server",
+        "value": "3000",
+        "required": false
+      }
+    },
+    "formation": {
+      "web": {
+        "quantity": 1,
+        "size": "eco"
+      }
+    },
+    "succesful_url": "/"
+  }
+  
