@@ -15,10 +15,10 @@
         "required": true,
         "value": ""
       },
-      "PORT": {
-        "description": "Port for the web server",
-        "value": "3000",
-        "required": false
+      "SLACK_APP_TOKEN": {
+        "description": "Slack App Token",
+        "required": true,
+        "value": ""
       }
     },
     "formation": {
