@@ -23,15 +23,11 @@
     },
     "formation": {
       "worker": {
-        "quantity": 0,
-        "size": "eco"
-      },
-      "web": {
         "quantity": 1,
-        "size": "free"
+        "size": "eco"
       }
     },
     
-    "succesful_url": "/"
+    "successful_url": "/"
   }
   
