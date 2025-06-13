@@ -14,11 +14,6 @@
         "description": "Slack Signing Secret",
         "required": true,
         "value": ""
-      },
-      "PORT": {
-        "description": "Port for the web server",
-        "value": "3000",
-        "required": false
       }
     },
     "formation": {
