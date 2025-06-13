@@ -2,11 +2,6 @@
 
 This is a generic Bolt for JavaScript template app used to build out Slack apps.
 
-## Deploy to Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/allhaile/bolt-js-starter-template)
-
-
-
 ## Setup
 
 Before getting started, make sure you have a development workspace where you have permissions to install apps. If you don’t have one setup, go ahead and [create one](https://slack.com/create).
@@ -65,6 +60,12 @@ npm run lint
 
 Every incoming request is routed to a "listener". Inside this directory, we group each listener based on the Slack Platform feature used, so `/listeners/shortcuts` handles incoming [Shortcuts](https://api.slack.com/interactivity/shortcuts) requests, `/listeners/views` handles [View submissions](https://api.slack.com/reference/interaction-payloads/views#view_submission) and so on.
 
+## Heroku Deployment
+Use the `Deploy to Heroku` button below to launch this app on Heroku.
+Ensure your Heroku config vars include the required Slack env variables.
+
+## Deploy to Heroku
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/allhaile/bolt-js-starter-template)
 
 ## App Distribution / OAuth
 
