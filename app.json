@@ -2,7 +2,7 @@
     "name": "bolt-js-starter-template",
     "description": "A Slack Bolt JS starter app deployed via Heroku",
     "repository": "https://github.com/allhaile/bolt-js-starter-template",
-    "logo": "https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png",
+    "logo": "https://docs.slack.dev/img/logos/slack-developers-white.png",
     "keywords": ["node", "slack", "bolt", "javascript", "starter"],
     "env": {
       "SLACK_BOT_TOKEN": {
@@ -23,7 +23,6 @@
         "quantity": 1,
         "size": "eco"
       }
-    },
-    "successful_url": "/"
+    }
   }
   
