@@ -60,6 +60,16 @@ npm run lint
 
 Every incoming request is routed to a "listener". Inside this directory, we group each listener based on the Slack Platform feature used, so `/listeners/shortcuts` handles incoming [Shortcuts](https://api.slack.com/interactivity/shortcuts) requests, `/listeners/views` handles [View submissions](https://api.slack.com/reference/interaction-payloads/views#view_submission) and so on.
 
+## Heroku Deployment
+Use the `Deploy to Heroku` button below to launch this app on Heroku. Ensure your Heroku config vars include the required Slack env variables.
+<!--
+  NOTE: This Deploy to Heroku button currently points to my personal fork
+  to allow testing of the latest changes.
+  Before merging this PR, be sure to update the URL to point to the
+  official Slack bolt-js-starter-template repository.
+-->
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/allhaile/bolt-js-starter-template)
 
 ## App Distribution / OAuth
 
