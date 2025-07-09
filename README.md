@@ -63,7 +63,7 @@ Every incoming request is routed to a "listener". Inside this directory, we grou
 ## Heroku Deployment
 Use the `Deploy to Heroku` button below to launch this app on Heroku. Ensure your Heroku config vars include the required Slack env variables.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/allhaile/bolt-js-starter-template)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/slack-samples/bolt-js-starter-template)
 
 ## App Distribution / OAuth
 
