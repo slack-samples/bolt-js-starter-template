@@ -1,6 +1,6 @@
 {
     "name": "bolt-js-starter-template",
-    "description": "A Slack Bolt JS starter app deployed via Heroku",
+    "description": "A Slack Bolt JS starter app. This app.json is used for one-click Heroku deployment of this Slack app.",
     "repository": "https://github.com/slack-samples/bolt-js-starter-template",
     "logo": "https://docs.slack.dev/img/logos/slack-developers-white.png",
     "keywords": ["node", "slack", "bolt", "javascript", "starter"],
