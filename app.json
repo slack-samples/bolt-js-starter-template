@@ -6,7 +6,7 @@
     "keywords": ["node", "slack", "bolt", "javascript", "starter"],
     "env": {
       "SLACK_BOT_TOKEN": {
-        "description": "Bot User OAuth Access Token",
+        "description": "Slack Bot Token",
         "required": true
       },
       "SLACK_SIGNING_SECRET": {
