@@ -51,6 +51,13 @@ npm start
 npm run lint
 ```
 
+#### Testing
+
+```zsh
+# Run test for unit tests
+npm test
+```
+
 ## Project Structure
 
 ### `manifest.json`
