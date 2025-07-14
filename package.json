@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "test": "mocha tests/**/*.spec.js",
     "lint": "npx @biomejs/biome check *.js listeners",
     "lint:fix": "npx @biomejs/biome check --write *.js listeners"
   },
@@ -27,6 +28,9 @@
     "dotenv": "~17.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0.6"
+    "@biomejs/biome": "^2.0.6",
+    "chai": "^5.2.1",
+    "mocha": "^11.7.1",
+    "sinon": "^21.0.0"
   }
 }
