@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
+const assert = require('node:assert');
+const { beforeEach, describe, mock, it } = require('node:test');
 const { sampleShortcutCallback } = require('../../listeners/shortcuts/sample-shortcut');
 
 describe('shortcuts', () => {
@@ -12,14 +12,14 @@ describe('shortcuts', () => {
     fakeShortcut = {
       trigger_id: 't1234',
     };
-    fakeAck = sinon.stub();
+    fakeAck = mock.fn();
     fakeClient = {
       views: {
-        open: sinon.stub(),
+        open: mock.fn(),
       },
     };
     fakeLogger = {
-      error: sinon.stub(),
+      error: mock.fn(),
     };
   });
 
@@ -31,17 +31,19 @@ describe('shortcuts', () => {
       logger: fakeLogger,
     });
 
-    expect(fakeAck.calledOnce).to.be.true;
-    expect(fakeClient.views.open.calledOnce).to.be.true;
+    assert.strictEqual(fakeAck.mock.callCount(), 1);
+    assert.strictEqual(fakeClient.views.open.mock.callCount(), 1);
 
-    const callArgs = fakeClient.views.open.getCall(0).args[0];
-    expect(callArgs.trigger_id).to.equal(fakeShortcut.trigger_id);
-    expect(callArgs.view).to.not.be.null;
+    const callArgs = fakeClient.views.open.mock.calls[0].arguments[0];
+    assert.equal(callArgs.trigger_id, fakeShortcut.trigger_id);
+    assert(callArgs.view);
   });
 
   it('should log error when ack throws exception', async () => {
     const testError = new Error('test exception');
-    fakeAck.rejects(testError);
+    fakeAck = mock.fn(() => {
+      throw testError;
+    });
 
     await sampleShortcutCallback({
       shortcut: fakeShortcut,
@@ -50,8 +52,8 @@ describe('shortcuts', () => {
       logger: fakeLogger,
     });
 
-    expect(fakeClient.views.open.called).to.be.false;
-    expect(fakeAck.calledOnce).to.be.true;
-    expect(fakeLogger.error.calledWith(testError)).to.be.true;
+    assert.strictEqual(fakeClient.views.open.mock.callCount(), 0);
+    assert.strictEqual(fakeAck.mock.callCount(), 1);
+    assert.deepEqual(fakeLogger.error.mock.calls[0].arguments, [testError]);
   });
 });

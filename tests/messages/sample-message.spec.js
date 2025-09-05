@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
+const assert = require('node:assert');
+const { beforeEach, describe, mock, it } = require('node:test');
 const { sampleMessageCallback } = require('../../listeners/messages/sample-message');
 
 describe('messages', () => {
@@ -11,9 +11,9 @@ describe('messages', () => {
     fakeContext = {
       matches: ['hello'],
     };
-    fakeSay = sinon.stub();
+    fakeSay = mock.fn();
     fakeLogger = {
-      error: sinon.stub(),
+      error: mock.fn(),
     };
   });
 
@@ -24,22 +24,24 @@ describe('messages', () => {
       logger: fakeLogger,
     });
 
-    expect(fakeSay.calledOnce).to.be.true;
-    const callArgs = fakeSay.getCall(0).args[0];
-    expect(callArgs).to.include(fakeContext.matches[0]);
-    expect(callArgs).to.include('hello, how are you?');
+    assert.strictEqual(fakeSay.mock.callCount(), 1);
+    const callArgs = fakeSay.mock.calls[0].arguments[0];
+    assert(callArgs.includes(fakeContext.matches[0]));
+    assert(callArgs.includes('hello, how are you?'));
   });
 
   it('should log error when say throws exception', async () => {
     const testError = new Error('test exception');
-    fakeSay.rejects(testError);
+    fakeSay = mock.fn(() => {
+      throw testError;
+    });
     await sampleMessageCallback({
       context: fakeContext,
       say: fakeSay,
       logger: fakeLogger,
     });
 
-    expect(fakeSay.calledOnce).to.be.true;
-    expect(fakeLogger.error.calledWith(testError)).to.be.true;
+    assert.strictEqual(fakeSay.mock.callCount(), 1);
+    assert.deepEqual(fakeLogger.error.mock.calls[0].arguments, [testError]);
   });
 });

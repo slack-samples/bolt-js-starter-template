@@ -4,10 +4,10 @@
   "description": "A scaffold template for Slack apps",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "mocha tests/**/*.spec.js",
     "lint": "npx @biomejs/biome check *.js listeners",
-    "lint:fix": "npx @biomejs/biome check --write *.js listeners"
+    "lint:fix": "npx @biomejs/biome check --write *.js listeners",
+    "start": "node app.js",
+    "test": "node --test tests/**/*.spec.js"
   },
   "author": "Slack Technologies, LLC",
   "license": "MIT",
@@ -28,9 +28,6 @@
     "dotenv": "~17.2.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.2.2",
-    "chai": "^5.2.1",
-    "mocha": "^11.7.1",
-    "sinon": "^21.0.0"
+    "@biomejs/biome": "^2.2.2"
   }
 }

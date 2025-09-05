@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
+const assert = require('node:assert');
+const { beforeEach, describe, mock, it } = require('node:test');
 const { appHomeOpenedCallback } = require('../../listeners/events/app-home-opened');
 
 describe('events', () => {
@@ -10,7 +10,7 @@ describe('events', () => {
   beforeEach(() => {
     fakeClient = {
       views: {
-        publish: sinon.stub(),
+        publish: mock.fn(),
       },
     };
     fakeEvent = {
@@ -18,7 +18,7 @@ describe('events', () => {
       user: 'U123',
     };
     fakeLogger = {
-      error: sinon.stub(),
+      error: mock.fn(),
     };
   });
 
@@ -29,11 +29,11 @@ describe('events', () => {
       logger: fakeLogger,
     });
 
-    expect(fakeClient.views.publish.calledOnce).to.be.true;
+    assert.strictEqual(fakeClient.views.publish.mock.callCount(), 1);
 
-    const callArgs = fakeClient.views.publish.getCall(0).args[0];
-    expect(callArgs.user_id).to.equal(fakeEvent.user);
-    expect(callArgs.view).to.not.be.null;
+    const callArgs = fakeClient.views.publish.mock.calls[0].arguments[0];
+    assert.equal(callArgs.user_id, fakeEvent.user);
+    assert(callArgs.view);
   });
 
   it('should not publish when event tab is not home', async () => {
@@ -45,12 +45,14 @@ describe('events', () => {
       logger: fakeLogger,
     });
 
-    expect(fakeClient.views.publish.called).to.be.false;
+    assert.strictEqual(fakeClient.views.publish.mock.callCount(), 0);
   });
 
   it('should log error when views publish throws exception', async () => {
     const testError = new Error('test exception');
-    fakeClient.views.publish.rejects(testError);
+    fakeClient.views.publish = mock.fn(() => {
+      throw testError;
+    });
 
     await appHomeOpenedCallback({
       client: fakeClient,
@@ -58,7 +60,7 @@ describe('events', () => {
       logger: fakeLogger,
     });
 
-    expect(fakeClient.views.publish.calledOnce).to.be.true;
-    expect(fakeLogger.error.calledWith(testError)).to.be.true;
+    assert.strictEqual(fakeClient.views.publish.mock.callCount(), 1);
+    assert.deepEqual(fakeLogger.error.mock.calls[0].arguments, [testError]);
   });
 });

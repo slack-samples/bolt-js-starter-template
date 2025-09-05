@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
+const assert = require('node:assert');
+const { beforeEach, describe, mock, it } = require('node:test');
 const { sampleCommandCallback } = require('../../listeners/commands/sample-command');
 
 describe('commands', () => {
@@ -8,10 +8,10 @@ describe('commands', () => {
   let fakeLogger;
 
   beforeEach(() => {
-    fakeAck = sinon.stub();
-    fakeRespond = sinon.stub();
+    fakeAck =  mock.fn();
+    fakeRespond = mock.fn();
     fakeLogger = {
-      error: sinon.stub(),
+      error: mock.fn(),
     };
   });
 
@@ -22,16 +22,18 @@ describe('commands', () => {
       logger: fakeLogger,
     });
 
-    expect(fakeAck.calledOnce).to.be.true;
-    expect(fakeRespond.calledOnce).to.be.true;
+    assert.strictEqual(fakeAck.mock.callCount(), 1);
+    assert.strictEqual(fakeRespond.mock.callCount(), 1);
 
-    const callArgs = fakeRespond.getCall(0).args[0];
-    expect(callArgs).to.include('Responding to the sample command!');
+    const callArgs = fakeRespond.mock.calls[0].arguments[0];
+    assert(callArgs.includes('Responding to the sample command!'));
   });
 
   it('should log error when ack throws exception', async () => {
     const testError = new Error('test exception');
-    fakeAck.rejects(testError);
+    fakeAck = mock.fn(() => {
+      throw testError;
+    });
 
     await sampleCommandCallback({
       ack: fakeAck,
@@ -39,7 +41,7 @@ describe('commands', () => {
       logger: fakeLogger,
     });
 
-    expect(fakeAck.calledOnce).to.be.true;
-    expect(fakeLogger.error.calledWith(testError)).to.be.true;
+    assert.strictEqual(fakeAck.mock.callCount(), 1);
+    assert.deepEqual(fakeLogger.error.mock.calls[0].arguments, [testError]);
   });
 });

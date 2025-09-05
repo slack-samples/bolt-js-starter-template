@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
+const assert = require('node:assert');
+const { beforeEach, describe, mock, it } = require('node:test');
 const { sampleViewCallback } = require('../../listeners/views/sample-view');
 
 describe('views', () => {
@@ -10,7 +10,7 @@ describe('views', () => {
   let fakeLogger;
 
   beforeEach(() => {
-    fakeAck = sinon.stub();
+    fakeAck = mock.fn();
     fakeView = {
       state: {
         values: {
@@ -34,11 +34,11 @@ describe('views', () => {
     };
     fakeClient = {
       chat: {
-        postMessage: sinon.stub(),
+        postMessage: mock.fn(),
       }
     };
     fakeLogger = {
-      error: sinon.stub(),
+      error: mock.fn(),
     };
   });
 
@@ -51,18 +51,20 @@ describe('views', () => {
       logger: fakeLogger,
     });
 
-    expect(fakeAck.calledOnce).to.be.true;
-    expect(fakeClient.chat.postMessage.calledOnce).to.be.true;
+    assert.strictEqual(fakeAck.mock.callCount(), 1);
+    assert.strictEqual(fakeClient.chat.postMessage.mock.callCount(), 1);
 
-    const callArgs = fakeClient.chat.postMessage.getCall(0).args[0];
-    expect(callArgs.channel).to.equal(fakeView.state.values.select_channel_block_id.sample_dropdown_id.selected_conversation);
-    expect(callArgs.text).to.include(fakeView.state.values.input_block_id.sample_input_id.value);
-    expect(callArgs.text).to.include(fakeBody.user.id);
+    const callArgs = fakeClient.chat.postMessage.mock.calls[0].arguments[0];
+    assert.equal(callArgs.channel, fakeView.state.values.select_channel_block_id.sample_dropdown_id.selected_conversation);
+    assert(callArgs.text.includes(fakeView.state.values.input_block_id.sample_input_id.value));
+    assert(callArgs.text.includes(fakeBody.user.id));
   });
 
   it('should log error when ack throws exception', async () => {
     const testError = new Error('test exception');
-    fakeAck.rejects(testError);
+    fakeAck = mock.fn(() => {
+      throw testError;
+    });
 
     await sampleViewCallback({
       ack: fakeAck,
@@ -72,7 +74,7 @@ describe('views', () => {
       logger: fakeLogger,
     });
 
-    expect(fakeAck.calledOnce).to.be.true;
-    expect(fakeLogger.error.calledWith(testError)).to.be.true;
+    assert.strictEqual(fakeAck.mock.callCount(), 1);
+    assert.deepEqual(fakeLogger.error.mock.calls[0].arguments, [testError]);
   });
 });

@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const sinon = require('sinon');
+const assert = require('node:assert');
+const { beforeEach, describe, mock, it } = require('node:test');
 const { sampleActionCallback } = require('../../listeners/actions/sample-action');
 
 describe('actions', () => {
@@ -9,10 +9,10 @@ describe('actions', () => {
   let fakeLogger;
 
   beforeEach(() => {
-    fakeAck = sinon.stub();
+    fakeAck =  mock.fn();
     fakeClient = {
       views: {
-        update: sinon.stub(),
+        update: mock.fn(),
       },
     };
     fakeBody = {
@@ -22,7 +22,7 @@ describe('actions', () => {
       },
     };
     fakeLogger = {
-      error: sinon.stub(),
+      error: mock.fn(),
     };
   });
 
@@ -34,18 +34,20 @@ describe('actions', () => {
       logger: fakeLogger,
     });
 
-    expect(fakeAck.calledOnce).to.be.true;
-    expect(fakeClient.views.update.calledOnce).to.be.true;
+    assert.strictEqual(fakeAck.mock.callCount(), 1);
+    assert.strictEqual(fakeClient.views.update.mock.callCount(), 1);
 
-    const callArgs = fakeClient.views.update.getCall(0).args[0];
-    expect(callArgs.view_id).to.equal(fakeBody.view.id);
-    expect(callArgs.hash).to.equal(fakeBody.view.hash);
-    expect(callArgs.view).to.not.be.null;
+    const callArgs = fakeClient.views.update.mock.calls[0].arguments[0];
+    assert.equal(callArgs.view_id, fakeBody.view.id);
+    assert.equal(callArgs.hash, fakeBody.view.hash);
+    assert(callArgs.view);
   });
 
   it('should log error when ack throws exception', async () => {
     const testError = new Error('test exception');
-    fakeAck.rejects(testError);
+    fakeAck = mock.fn(() => {
+      throw testError;
+    });
 
     await sampleActionCallback({
       ack: fakeAck,
@@ -54,7 +56,7 @@ describe('actions', () => {
       logger: fakeLogger,
     });
 
-    expect(fakeAck.calledOnce).to.be.true;
-    expect(fakeLogger.error.calledWith(testError)).to.be.true;
+    assert.strictEqual(fakeAck.mock.callCount(), 1);
+    assert.deepEqual(fakeLogger.error.mock.calls[0].arguments, [testError]);
   });
 });
