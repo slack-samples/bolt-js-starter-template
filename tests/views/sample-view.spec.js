@@ -1,6 +1,6 @@
-const assert = require('node:assert');
-const { beforeEach, describe, mock, it } = require('node:test');
-const { sampleViewCallback } = require('../../listeners/views/sample-view');
+import assert from 'node:assert';
+import { beforeEach, describe, mock, it } from 'node:test';
+import { sampleViewCallback } from '../../listeners/views/sample-view.js';
 
 describe('views', () => {
   let fakeAck;

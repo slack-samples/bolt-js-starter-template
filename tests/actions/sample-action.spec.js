@@ -1,6 +1,6 @@
-const assert = require('node:assert');
-const { beforeEach, describe, mock, it } = require('node:test');
-const { sampleActionCallback } = require('../../listeners/actions/sample-action');
+import assert from 'node:assert';
+import { beforeEach, describe, mock, it } from 'node:test';
+import { sampleActionCallback } from '../../listeners/actions/sample-action.js';
 
 describe('actions', () => {
   let fakeAck;

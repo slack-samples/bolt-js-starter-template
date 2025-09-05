@@ -1,6 +1,6 @@
-const assert = require('node:assert');
-const { beforeEach, describe, mock, it } = require('node:test');
-const { appHomeOpenedCallback } = require('../../listeners/events/app-home-opened');
+import assert from 'node:assert';
+import { beforeEach, describe, mock, it } from 'node:test';
+import { appHomeOpenedCallback } from '../../listeners/events/app-home-opened.js';
 
 describe('events', () => {
   let fakeClient;

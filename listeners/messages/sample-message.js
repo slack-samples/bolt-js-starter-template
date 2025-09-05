@@ -7,4 +7,4 @@ const sampleMessageCallback = async ({ context, say, logger }) => {
   }
 };
 
-module.exports = { sampleMessageCallback };
+export { sampleMessageCallback };
