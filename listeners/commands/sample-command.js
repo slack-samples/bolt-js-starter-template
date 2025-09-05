@@ -7,4 +7,4 @@ const sampleCommandCallback = async ({ ack, respond, logger }) => {
   }
 };
 
-module.exports = { sampleCommandCallback };
+export { sampleCommandCallback };

@@ -30,4 +30,4 @@ const appHomeOpenedCallback = async ({ client, event, logger }) => {
   }
 };
 
-module.exports = { appHomeOpenedCallback };
+export { appHomeOpenedCallback };

@@ -1,6 +1,6 @@
-const assert = require('node:assert');
-const { beforeEach, describe, mock, it } = require('node:test');
-const { sampleMessageCallback } = require('../../listeners/messages/sample-message');
+import assert from 'node:assert';
+import { beforeEach, describe, mock, it } from 'node:test';
+import { sampleMessageCallback } from '../../listeners/messages/sample-message.js';
 
 describe('messages', () => {
   let fakeContext;

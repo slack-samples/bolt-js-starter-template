@@ -62,4 +62,4 @@ const sampleActionCallback = async ({ ack, client, body, logger }) => {
   }
 };
 
-module.exports = { sampleActionCallback };
+export { sampleActionCallback };

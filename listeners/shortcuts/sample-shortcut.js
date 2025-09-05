@@ -66,4 +66,4 @@ const sampleShortcutCallback = async ({ shortcut, ack, client, logger }) => {
   }
 };
 
-module.exports = { sampleShortcutCallback };
+export { sampleShortcutCallback };

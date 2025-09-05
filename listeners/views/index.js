@@ -1,5 +1,5 @@
-const { sampleViewCallback } = require('./sample-view');
+import { sampleViewCallback } from './sample-view.js';
 
-module.exports.register = (app) => {
+export const register = (app) => {
   app.view('sample_view_id', sampleViewCallback);
 };
