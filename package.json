@@ -25,10 +25,10 @@
   },
   "dependencies": {
     "@slack/bolt": "^4.4.0",
-    "dotenv": "~17.0.0"
+    "dotenv": "~17.2.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0.6",
+    "@biomejs/biome": "^2.2.2",
     "chai": "^5.2.1",
     "mocha": "^11.7.1",
     "sinon": "^21.0.0"
