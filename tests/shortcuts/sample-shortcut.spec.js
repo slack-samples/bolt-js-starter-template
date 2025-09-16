@@ -1,5 +1,5 @@
 import assert from 'node:assert';
-import { beforeEach, describe, mock, it } from 'node:test';
+import { beforeEach, describe, it, mock } from 'node:test';
 import { sampleShortcutCallback } from '../../listeners/shortcuts/sample-shortcut.js';
 
 describe('shortcuts', () => {

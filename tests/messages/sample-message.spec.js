@@ -1,5 +1,5 @@
 import assert from 'node:assert';
-import { beforeEach, describe, mock, it } from 'node:test';
+import { beforeEach, describe, it, mock } from 'node:test';
 import { sampleMessageCallback } from '../../listeners/messages/sample-message.js';
 
 describe('messages', () => {
