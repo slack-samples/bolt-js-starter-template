@@ -15,4 +15,4 @@ const sampleViewCallback = async ({ ack, view, body, client, logger }) => {
   }
 };
 
-module.exports = { sampleViewCallback };
+export { sampleViewCallback };

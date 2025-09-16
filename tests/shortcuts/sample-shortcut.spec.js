@@ -1,6 +1,6 @@
-const assert = require('node:assert');
-const { beforeEach, describe, mock, it } = require('node:test');
-const { sampleShortcutCallback } = require('../../listeners/shortcuts/sample-shortcut');
+import assert from 'node:assert';
+import { beforeEach, describe, it, mock } from 'node:test';
+import { sampleShortcutCallback } from '../../listeners/shortcuts/sample-shortcut.js';
 
 describe('shortcuts', () => {
   let fakeShortcut;

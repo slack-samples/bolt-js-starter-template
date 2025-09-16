@@ -1,5 +1,5 @@
-const { appHomeOpenedCallback } = require('./app-home-opened');
+import { appHomeOpenedCallback } from './app-home-opened.js';
 
-module.exports.register = (app) => {
+export const register = (app) => {
   app.event('app_home_opened', appHomeOpenedCallback);
 };

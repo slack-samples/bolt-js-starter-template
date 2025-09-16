@@ -1,5 +1,5 @@
-const { sampleCommandCallback } = require('./sample-command');
+import { sampleCommandCallback } from './sample-command.js';
 
-module.exports.register = (app) => {
+export const register = (app) => {
   app.command('/sample-command', sampleCommandCallback);
 };
