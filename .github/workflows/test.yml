@@ -1,4 +1,4 @@
-name: Lint
+name: Test
 
 on:
   push:
@@ -25,3 +25,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run lint
+      - run: npm test

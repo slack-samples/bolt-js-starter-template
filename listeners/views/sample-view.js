@@ -1,7 +1,7 @@
 const sampleViewCallback = async ({ ack, view, body, client, logger }) => {
-  await ack();
-
   try {
+    await ack();
+
     const formValues = view.state.values;
     const sampleInputValue = formValues.input_block_id.sample_input_id.value;
     const sampleConvoDropdown = formValues.select_channel_block_id.sample_dropdown_id;
