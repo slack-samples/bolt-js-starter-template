@@ -1,5 +1,5 @@
-const { sampleActionCallback } = require('./sample-action');
+import { sampleActionCallback } from './sample-action.js';
 
-module.exports.register = (app) => {
+export const register = (app) => {
   app.action('sample_action_id', sampleActionCallback);
 };

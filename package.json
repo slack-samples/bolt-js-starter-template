@@ -2,11 +2,13 @@
   "name": "bolt-js-starter-template",
   "version": "1.0.0",
   "description": "A scaffold template for Slack apps",
+  "type": "module",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
     "lint": "npx @biomejs/biome check *.js listeners",
-    "lint:fix": "npx @biomejs/biome check --write *.js listeners"
+    "lint:fix": "npx @biomejs/biome check --write *.js listeners",
+    "start": "node app.js",
+    "test": "node --test tests/**/*.spec.js"
   },
   "author": "Slack Technologies, LLC",
   "license": "MIT",

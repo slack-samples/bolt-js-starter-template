@@ -1,5 +1,5 @@
-const { sampleMessageCallback } = require('./sample-message');
+import { sampleMessageCallback } from './sample-message.js';
 
-module.exports.register = (app) => {
+export const register = (app) => {
   app.message(/^(hi|hello|hey).*/, sampleMessageCallback);
 };
