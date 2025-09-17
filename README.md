@@ -40,7 +40,10 @@ cd bolt-js-starter-template
 # Install dependencies
 npm install
 
-# Run Bolt server
+# Run a Bolt server that restarts after file changes
+npm run dev
+
+# Run a Bolt server
 npm start
 ```
 
