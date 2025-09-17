@@ -1,5 +1,5 @@
-const { sampleShortcutCallback } = require('./sample-shortcut');
+import { sampleShortcutCallback } from './sample-shortcut.js';
 
-module.exports.register = (app) => {
+export const register = (app) => {
   app.shortcut('sample_shortcut_id', sampleShortcutCallback);
 };
