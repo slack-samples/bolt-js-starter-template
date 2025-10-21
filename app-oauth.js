@@ -1,4 +1,4 @@
-import bolt, { LogLevel } from '@slack/bolt';
+import { App, LogLevel } from '@slack/bolt';
 import { config } from 'dotenv';
 import { registerListeners } from './listeners/index.js';
 
@@ -7,7 +7,7 @@ config();
 // For development purposes only
 const tempDB = new Map();
 
-const app = new bolt.App({
+const app = new App({
   logLevel: LogLevel.DEBUG,
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   clientId: process.env.SLACK_CLIENT_ID,
