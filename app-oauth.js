@@ -13,6 +13,7 @@ const app = new App({
   stateSecret: 'my-state-secret',
   scopes: ['channels:history', 'chat:write', 'commands'],
   // FileInstallationStore is intended for development purposes only
+  // Learn more: https://docs.slack.dev/tools/bolt-js/concepts/authenticating-oauth#installation-store
   installationStore: new FileInstallationStore(),
   installerOptions: {
     // If true, /slack/install redirects installers to the Slack Authorize URL
