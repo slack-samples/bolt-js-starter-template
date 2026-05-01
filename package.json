@@ -30,6 +30,6 @@
     "dotenv": "~17.3.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.10"
+    "@biomejs/biome": "^2.4.13"
   }
 }
