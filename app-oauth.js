@@ -19,6 +19,9 @@ const app = new App({
     // without rendering the web page with "Add to Slack" button
     directInstall: false,
   },
+  clientOptions: {
+    slackApiUrl: process.env.SLACK_API_URL,
+  },
 });
 
 /** Register Listeners */
