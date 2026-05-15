@@ -32,15 +32,7 @@ slack create my-bolt-js-app --template slack-samples/bolt-js-starter-template
 cd my-bolt-js-app
 ```
 
-#### Creating the Slack app
-
-Use the following command to add your new Slack app to your development workspace. Choose a "local" app environment for upcoming development:
-
-```sh
-slack install
-```
-
-After the Slack app has been created you're all set to start developing!
+After cloning, you're all set to start developing!
 
 </details>
 
