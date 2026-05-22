@@ -1,13 +1,10 @@
 {
-  "name": "Bolt Template App",
-  "image": "ghcr.io/slackapi/slack-cli:test-node",
+  "name": "Slack Platform",
+  "dockerFile": "Dockerfile",
+  "remoteUser": "slackdev",
   "customizations": {
     "vscode": {
-      "settings": {
-        "telemetry.telemetryLevel": "off",
-        "workbench.startupEditor": "none"
-      },
-      "extensions": []
+      "extensions": ["denoland.vscode-deno", "ms-azuretools.vscode-docker"]
     }
   }
 }
