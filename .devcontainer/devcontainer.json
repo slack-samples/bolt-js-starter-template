@@ -1,3 +1,13 @@
 {
-  "image": "ghcr.io/slackapi/slack-cli:test-node"
+  "name": "Bolt Template App",
+  "image": "ghcr.io/slackapi/slack-cli:test-node",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "telemetry.telemetryLevel": "off",
+        "workbench.startupEditor": "none"
+      },
+      "extensions": []
+    }
+  }
 }
