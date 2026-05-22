@@ -1,0 +1,6 @@
+{
+  "id": "slack-cli",
+  "version": "1.0.0",
+  "name": "Slack CLI",
+  "description": "Installs the Slack CLI for building and deploying Slack apps."
+}

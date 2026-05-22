@@ -1,3 +1,16 @@
 {
-  "image": "ghcr.io/slackapi/slack-cli:test-node"
+  "name": "Bolt Template App",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24-trixie",
+  "features": {
+    "./slack-cli": {}
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "telemetry.telemetryLevel": "off",
+        "workbench.startupEditor": "none"
+      },
+      "extensions": []
+    }
+  }
 }
