@@ -1,5 +1,5 @@
 {
-  "name": "Bolt Template App",
+  "name": "Bolt Template App Codespace",
   "image": "ghcr.io/slackapi/slack-cli:test-node",
   "customizations": {
     "vscode": {
