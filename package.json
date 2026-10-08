@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "node --watch app.js",
     "lint": "npx @biomejs/biome check .",
-    "lint:fix": "npx @biomejs/biome check --write *.js listeners",
+    "lint:fix": "npx @biomejs/biome check --write .",
     "start": "node app.js",
     "test": "node --test tests/**/*.spec.js"
   },
