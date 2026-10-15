@@ -35,7 +35,7 @@ describe('views', () => {
     fakeClient = {
       chat: {
         postMessage: mock.fn(),
-      }
+      },
     };
     fakeLogger = {
       error: mock.fn(),
@@ -55,7 +55,10 @@ describe('views', () => {
     assert.strictEqual(fakeClient.chat.postMessage.mock.callCount(), 1);
 
     const callArgs = fakeClient.chat.postMessage.mock.calls[0].arguments[0];
-    assert.equal(callArgs.channel, fakeView.state.values.select_channel_block_id.sample_dropdown_id.selected_conversation);
+    assert.equal(
+      callArgs.channel,
+      fakeView.state.values.select_channel_block_id.sample_dropdown_id.selected_conversation,
+    );
     assert(callArgs.text.includes(fakeView.state.values.input_block_id.sample_input_id.value));
     assert(callArgs.text.includes(fakeBody.user.id));
   });

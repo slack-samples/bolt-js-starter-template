@@ -9,7 +9,7 @@ describe('actions', () => {
   let fakeLogger;
 
   beforeEach(() => {
-    fakeAck =  mock.fn();
+    fakeAck = mock.fn();
     fakeClient = {
       views: {
         update: mock.fn(),

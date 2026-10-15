@@ -8,7 +8,7 @@ describe('commands', () => {
   let fakeLogger;
 
   beforeEach(() => {
-    fakeAck =  mock.fn();
+    fakeAck = mock.fn();
     fakeRespond = mock.fn();
     fakeLogger = {
       error: mock.fn(),
