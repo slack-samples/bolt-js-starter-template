@@ -1,0 +1,4 @@
+# Skills installed by `npx skills add`. Collapsed in GitHub diffs.
+.agents/skills/** linguist-generated
+.claude/skills/** linguist-generated
+skills-lock.json linguist-generated
