@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "skills": {
+    "block-kit": {
+      "source": "slackapi/slack-skills-plugin",
+      "sourceType": "github",
+      "skillPath": "skills/block-kit/SKILL.md",
+      "computedHash": "4fc603893f19eaeb054ad419fdd6c446520384e34ab8a183fc627b90225409d5"
+    },
+    "create-slack-app": {
+      "source": "slackapi/slack-skills-plugin",
+      "sourceType": "github",
+      "skillPath": "skills/create-slack-app/SKILL.md",
+      "computedHash": "09a0cf50b186d66218b622c538f0c5680eef9da7b5299143ba56990f0d87868f"
+    },
+    "deploy-slack-app": {
+      "source": "slackapi/slack-skills-plugin",
+      "sourceType": "github",
+      "skillPath": "skills/deploy-slack-app/SKILL.md",
+      "computedHash": "67d2034ee06c148e4fde107a33398920034c36513c312b4ddcb3c114275c96ee"
+    },
+    "slack-api": {
+      "source": "slackapi/slack-skills-plugin",
+      "sourceType": "github",
+      "skillPath": "skills/slack-api/SKILL.md",
+      "computedHash": "017f5c050c3c682e99eb10574d7c3cb8f2b34ef73570efab52f347923eaa6b58"
+    },
+    "slack-cli": {
+      "source": "slackapi/slack-skills-plugin",
+      "sourceType": "github",
+      "skillPath": "skills/slack-cli/SKILL.md",
+      "computedHash": "5124c5ab03dd63791cfd108fdb57f3a88244f24131509453d921cbb682cc5892"
+    },
+    "slack-docs": {
+      "source": "slackapi/slack-skills-plugin",
+      "sourceType": "github",
+      "skillPath": "skills/slack-docs/SKILL.md",
+      "computedHash": "55e5995c4d2c50829d2d644fdbfbecc11cd7f0a32a3de1fc33ad98e7cf9c70cf"
+    },
+    "slack-messaging": {
+      "source": "slackapi/slack-skills-plugin",
+      "sourceType": "github",
+      "skillPath": "skills/slack-messaging/SKILL.md",
+      "computedHash": "d7999b5b50d3fccab79bfcf5288bbf71a8db0ab6a3c3e586d8b7dfeea2f66053"
+    },
+    "slack-search": {
+      "source": "slackapi/slack-skills-plugin",
+      "sourceType": "github",
+      "skillPath": "skills/slack-search/SKILL.md",
+      "computedHash": "ed48a4d92cf98a5e3af0effc70413fa70f6598e7ace99803fd9dcced2a371e78"
+    },
+    "test-slack-app": {
+      "source": "slackapi/slack-skills-plugin",
+      "sourceType": "github",
+      "skillPath": "skills/test-slack-app/SKILL.md",
+      "computedHash": "5dc6e69e46a32da40d7f05ccae340d2a6b5beffe23eee3d2f941830864d2a2db"
+    }
+  }
+}
