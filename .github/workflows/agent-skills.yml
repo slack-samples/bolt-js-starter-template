@@ -28,7 +28,7 @@ jobs:
             .agents/skills
             .claude/skills
             skills-lock.json
-          branch: skills-update
+          branch: agent-skills
           delete-branch: true
           commit-message: "chore: update agent skills"
           title: "chore: update agent skills"
