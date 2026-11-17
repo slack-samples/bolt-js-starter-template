@@ -1,0 +1,35 @@
+name: Update agent skills
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+jobs:
+  skills:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24.x
+      - name: Update the skills in skills-lock.json
+        run: npx --yes skills@1 update --project --yes
+      - name: Open a pull request with the updates
+        uses: peter-evans/create-pull-request@v8
+        with:
+          add-paths: |
+            .agents/skills
+            .claude/skills
+            skills-lock.json
+          branch: skills-update
+          delete-branch: true
+          commit-message: "chore: update agent skills"
+          title: "chore: update agent skills"
+          body: "Updates the agent skills in `skills-lock.json` to the latest versions."
