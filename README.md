@@ -14,6 +14,8 @@ Join the [Slack Developer Program](https://api.slack.com/developer-program) for 
 
 Install the [Slack MCP and Skills Plugin](https://docs.slack.dev/ai/slack-skills-plugin/) so your coding agent can create, run, and deploy Slack apps, look up Web API methods and scopes, and build Block Kit without guessing.
 
+`.github/workflows/agent-skills.yml` checks daily for updates to the agent skills in `skills-lock.json` and opens a pull request when they change. To let it open pull requests in your own repository, turn on **Allow GitHub Actions to create and approve pull requests** in **Settings > Actions > General**.
+
 #### Claude Code
 
 Run this in a Claude Code session:
@@ -155,10 +157,6 @@ npm test
 ### `/listeners`
 
 Every incoming request is routed to a "listener". Inside this directory, we group each listener based on the Slack Platform feature used, so `/listeners/shortcuts` handles incoming [Shortcuts](https://docs.slack.dev/interactivity/implementing-shortcuts/) requests, `/listeners/views` handles [View submissions](https://api.slack.com/reference/interaction-payloads/views#view_submission) and so on.
-
-### `.github/workflows/agent-skills.yml`
-
-`.github/workflows/agent-skills.yml` checks daily for updates to the agent skills in `skills-lock.json` and opens a pull request when they change. To let it open pull requests in your own repository, turn on **Allow GitHub Actions to create and approve pull requests** in **Settings > Actions > General**.
 
 ## App Distribution / OAuth
 
