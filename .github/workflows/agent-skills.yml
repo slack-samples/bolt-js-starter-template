@@ -22,14 +22,17 @@ jobs:
       - name: Update the skills in skills-lock.json
         run: npx --yes skills@1 update --project --yes
       - name: Open a pull request with the updates
-        uses: peter-evans/create-pull-request@3ffccacd46053766916f087ce41d627c0b8cf2d1 # v8.1.3
-        with:
-          add-paths: |
-            .agents/skills
-            .claude/skills
-            skills-lock.json
-          branch: agent-skills
-          delete-branch: true
-          commit-message: "chore: update agent skills"
-          title: "chore: update agent skills"
-          body: "Updates the agent skills in `skills-lock.json` to the latest versions."
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add .agents/skills .claude/skills skills-lock.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C agent-skills
+          git commit -m "chore: update agent skills"
+          gh auth setup-git
+          git push --force origin agent-skills
+          if [ "$(gh pr view agent-skills --json state --jq .state 2>/dev/null)" != "OPEN" ]; then
+            gh pr create --head agent-skills --title "chore: update agent skills" --body "Updates the agent skills in \`skills-lock.json\` to the latest versions."
+          fi
