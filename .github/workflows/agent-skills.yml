@@ -1,0 +1,38 @@
+name: Update agent skills
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+jobs:
+  skills:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24.x
+      - name: Update the skills in skills-lock.json
+        run: npx --yes skills@1 update --project --yes
+      - name: Open a pull request with the updates
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add .agents/skills .claude/skills skills-lock.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C agent-skills
+          git commit -m "chore: update agent skills"
+          gh auth setup-git
+          git push --force origin agent-skills
+          if [ "$(gh pr view agent-skills --json state --jq .state 2>/dev/null)" != "OPEN" ]; then
+            gh pr create --head agent-skills --title "chore: update agent skills" --body "Updates the agent skills in \`skills-lock.json\` to the latest versions."
+          fi
