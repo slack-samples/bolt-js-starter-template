@@ -20,13 +20,17 @@ jobs:
         with:
           node-version: 24.x
       - name: Update the skills in skills-lock.json
-        run: npx --yes skills@1 update --project --yes
+        run: npx --yes skills@1 add slackapi/slack-skills-plugin --skill '*' --agent universal --agent claude-code --copy --yes
       - name: Open a pull request with the updates
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           git add .agents/skills .claude/skills skills-lock.json
           if git diff --cached --quiet; then exit 0; fi
+          if git diff --cached --quiet -- . ':!skills-lock.json' &&
+            [ "$(git show HEAD:skills-lock.json | jq -S 'del(.skills[].commit)')" = "$(jq -S 'del(.skills[].commit)' skills-lock.json)" ]; then
+            exit 0
+          fi
           gh auth setup-git
           state="$(gh pr view agent-skills --json state --jq .state 2>/dev/null || true)"
           if [ "$state" = "OPEN" ] && git fetch --quiet --depth 2 origin agent-skills && [ "$(git rev-parse FETCH_HEAD^)" = "$(git rev-parse HEAD)" ] && git diff --cached --quiet FETCH_HEAD; then exit 0; fi
