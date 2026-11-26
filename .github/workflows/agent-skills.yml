@@ -49,8 +49,10 @@ jobs:
           git switch -C agent-skills
           git commit -m "chore: update agent skills to $TAG"
           git push --force origin agent-skills
+          title="chore: update agent skills to $TAG"
+          body="Updates the agent skills in \`skills-lock.json\` to the [$TAG](https://github.com/slackapi/slack-skills-plugin/releases/tag/$TAG) release."
           if [ "$(gh pr view agent-skills --json state --jq .state 2>/dev/null)" != "OPEN" ]; then
-            gh pr create --head agent-skills --title "chore: update agent skills to $TAG" --body "Updates the agent skills in \`skills-lock.json\` to the [$TAG](https://github.com/slackapi/slack-skills-plugin/releases/tag/$TAG) release."
+            gh pr create --head agent-skills --title "$title" --body "$body"
           else
-            gh pr edit agent-skills --title "chore: update agent skills to $TAG"
+            gh pr edit agent-skills --title "$title" --body "$body"
           fi
