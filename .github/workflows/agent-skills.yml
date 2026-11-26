@@ -22,7 +22,9 @@ jobs:
       - name: Update the skills in skills-lock.json
         run: |
           npx --yes skills@1 add slackapi/slack-skills-plugin --skill '*' --agent universal --agent claude-code --copy --yes
-          diff -rq .agents/skills .claude/skills
+          skills="$(jq -r '.skills | to_entries[] | select(.value.source == "slackapi/slack-skills-plugin") | .key' skills-lock.json)"
+          [ -n "$skills" ]
+          for skill in $skills; do diff -rq ".agents/skills/$skill" ".claude/skills/$skill"; done
       - name: Open a pull request with the updates
         env:
           GH_TOKEN: ${{ github.token }}
